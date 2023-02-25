@@ -165,18 +165,18 @@ void CAMERA_Command(uint8_t addr_h,uint8_t addr_l,uint8_t data)
 	CAMERA_Stop();
 }
 
-void CAMERA_Initial(void)
+void CAMERA_Init(void)
 {
-    Set_CAMERA_SDA_W();
+  Set_CAMERA_SDA_W();
 	Clr_CAMERA_PWDN();
 	delay(100);
 	Set_CAMERA_RST();
 	delay(100);
 
-    uint16_t reg;
-    reg  = CAMERA_Read_Reg(0x300a);
-    reg <<= 8;
-    reg |= CAMERA_Read_Reg(0x300b);
+  uint16_t reg;
+  reg  = CAMERA_Read_Reg(0x300a);
+  reg <<= 8;
+  reg |= CAMERA_Read_Reg(0x300b);
     
     
     uint32_t i;

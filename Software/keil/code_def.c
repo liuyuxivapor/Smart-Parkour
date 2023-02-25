@@ -12,7 +12,7 @@ void SYSInit(void)
 	Set_SysTick_CTRL(0);
 
 	// CAMERA initial
-	CAMERA_Initial();
+	CAMERA_Init();
 }
 
 void delay(uint32_t time)
