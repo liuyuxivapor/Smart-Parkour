@@ -8,7 +8,7 @@ int main()
 {
   SYSInit();
   LCD->LCD_RST = 0;
-  delay(5000000); // delay 100ms
+  delay(2500000); // delay 100ms
   LCD->LCD_RST = 1;
   LCD_Init(1);
   return 0;

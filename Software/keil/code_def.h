@@ -135,7 +135,7 @@ void CAMERA_Waite(void);
 void CAMERA_Write_Byte(uint8_t data);
 void CAMERA_Command(uint8_t addr_h,uint8_t addr_l,uint8_t data);
 void CAMERA_Data(uint8_t data);
-void CAMERA_Initial(void);
+void CAMERA_Init(void);
 uint32_t Read_CAMERA_DATA_STATE(void);
 void Set_CAMERA_DATA_STATE(uint32_t state);
 uint32_t Read_CAMERA_DATA_LEN(void);
@@ -149,7 +149,7 @@ void CAMERA_Contrast(void);
 void CAMERA_Sharpness(void);	
 uint8_t CAMERA_Focus_Constant(void);
 void CAMERA_NA(void);
-void photo();
+void photo(void);
 
 //  LCD 
 typedef struct  

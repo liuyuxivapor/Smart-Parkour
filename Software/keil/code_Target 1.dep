@@ -1,0 +1,25 @@
+Dependencies for Project 'code', Target 'Target 1': (DO NOT MODIFY !)
+F (.\camera.c)(0x63F9A71C)(-c --cpu Cortex-M0 -g -O0 --apcs=interwork --split_sections-I \\wsl.localhost\Ubuntu-20.04\home\vapor\codes\arm\Smart-Parkour\Software\keil\RTE-I D:\Software\Keil_v5\ARM\PACK\Keil\V2M-MPS2_CMx_BSP\1.8.0-I D:\Software\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="514" -DCMSDK_CM0-o .\camera.o --omf_browse .\camera.crf --depend .\camera.d)
+I (code_def.h)(0x63F94822)
+I (D:\Software\Keil_v5\ARM\ARMCC\include\stdint.h)(0x5475F300)
+I (camera_initial_reg_file.h)(0x63F93888)
+F (.\code_def.c)(0x63F9A72D)(-c --cpu Cortex-M0 -g -O0 --apcs=interwork --split_sections-I \\wsl.localhost\Ubuntu-20.04\home\vapor\codes\arm\Smart-Parkour\Software\keil\RTE-I D:\Software\Keil_v5\ARM\PACK\Keil\V2M-MPS2_CMx_BSP\1.8.0-I D:\Software\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="514" -DCMSDK_CM0-o .\code_def.o --omf_browse .\code_def.crf --depend .\code_def.d)
+I (code_def.h)(0x63F94822)
+I (D:\Software\Keil_v5\ARM\ARMCC\include\stdint.h)(0x5475F300)
+I (D:\Software\Keil_v5\ARM\ARMCC\include\string.h)(0x5475F300)
+F (.\lcd.c)(0x63F948A6)(-c --cpu Cortex-M0 -g -O0 --apcs=interwork --split_sections-I \\wsl.localhost\Ubuntu-20.04\home\vapor\codes\arm\Smart-Parkour\Software\keil\RTE-I D:\Software\Keil_v5\ARM\PACK\Keil\V2M-MPS2_CMx_BSP\1.8.0-I D:\Software\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="514" -DCMSDK_CM0-o .\lcd.o --omf_browse .\lcd.crf --depend .\lcd.d)
+I (code_def.h)(0x63F94822)
+I (D:\Software\Keil_v5\ARM\ARMCC\include\stdint.h)(0x5475F300)
+I (D:\Software\Keil_v5\ARM\ARMCC\include\stdio.h)(0x5475F300)
+I (lcdfont.h)(0x63F937B4)
+F (.\main.c)(0x63F9CE1F)(-c --cpu Cortex-M0 -g -O0 --apcs=interwork --split_sections-I \\wsl.localhost\Ubuntu-20.04\home\vapor\codes\arm\Smart-Parkour\Software\keil\RTE-I D:\Software\Keil_v5\ARM\PACK\Keil\V2M-MPS2_CMx_BSP\1.8.0-I D:\Software\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="514" -DCMSDK_CM0-o .\main.o --omf_browse .\main.crf --depend .\main.d)
+I (D:\Software\Keil_v5\ARM\ARMCC\include\stdint.h)(0x5475F300)
+I (D:\Software\Keil_v5\ARM\ARMCC\include\stdio.h)(0x5475F300)
+I (code_def.h)(0x63F94822)
+F (.\systick.c)(0x63F93776)(-c --cpu Cortex-M0 -g -O0 --apcs=interwork --split_sections-I \\wsl.localhost\Ubuntu-20.04\home\vapor\codes\arm\Smart-Parkour\Software\keil\RTE-I D:\Software\Keil_v5\ARM\PACK\Keil\V2M-MPS2_CMx_BSP\1.8.0-I D:\Software\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="514" -DCMSDK_CM0-o .\systick.o --omf_browse .\systick.crf --depend .\systick.d)
+I (code_def.h)(0x63F94822)
+I (D:\Software\Keil_v5\ARM\ARMCC\include\stdint.h)(0x5475F300)
+F (.\lcdfont.h)(0x63F937B4)()
+F (.\camera_initial_reg_file.h)(0x63F93888)()
+F (.\code_def.h)(0x63F94822)()
+F (.\startup_CMSDK_CM0.s)(0x63F74DE3)(--cpu Cortex-M0 -g --apcs=interwork -I \\wsl.localhost\Ubuntu-20.04\home\vapor\codes\arm\Smart-Parkour\Software\keil\RTE-I D:\Software\Keil_v5\ARM\PACK\Keil\V2M-MPS2_CMx_BSP\1.8.0-I D:\Software\Keil_v5\ARM\CMSIS\Include--pd "__UVISION_VERSION SETA 514" --pd "CMSDK_CM0 SETA 1"--list .\listings\startup_cmsdk_cm0.lst --xref -o .\startup_cmsdk_cm0.o --depend .\startup_cmsdk_cm0.d)

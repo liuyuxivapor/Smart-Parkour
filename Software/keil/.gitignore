@@ -1,0 +1,8 @@
+!*.c
+!*.h
+!*.s
+!code.ini
+!code.uvprojx
+
+!*.axf
+!*.hex

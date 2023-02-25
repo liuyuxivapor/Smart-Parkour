@@ -304,8 +304,8 @@ void LCD_Display_Dir(uint8_t dir)
 
 void LCD_Set_Window(uint16_t sx,uint16_t sy,uint16_t width,uint16_t height)
 {    
-	uint8_t hsareg,heareg,vsareg,veareg;
-	uint16_t hsaval,heaval,vsaval,veaval; 
+	// uint8_t hsareg,heareg,vsareg,veareg;
+	// uint16_t hsaval,heaval,vsaval,veaval; 
 	uint16_t twidth,theight;
 	twidth=sx+width-1;
 	theight=sy+height-1;
@@ -451,7 +451,6 @@ void LCD_Fill(uint16_t sx,uint16_t sy,uint16_t ex,uint16_t ey,uint16_t color)
 {          
 	uint16_t i,j;
 	uint16_t xlen=0;
-	uint16_t temp;
 	xlen=ex-sx+1;	 
 	for(i=sy;i<=ey;i++)
 	{
