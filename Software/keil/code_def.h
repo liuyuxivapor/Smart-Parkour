@@ -69,6 +69,8 @@ void WriteUART(char data);
 void UARTString(char *stri);
 void UARTHandle(void);
 
+
+
 //SCB DEF
 typedef struct
 {

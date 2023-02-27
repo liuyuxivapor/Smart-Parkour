@@ -1,8 +1,8 @@
 /*
  * @Author: Xuejian Sun 
  * @Date: 2023-02-23 13:16:55 
- * @Last Modified by:   Xuejian Sun 
- * @Last Modified time: 2023-02-23 13:16:55 
+ * @Last Modified by: Xuejian Sun
+ * @Last Modified time: 2023-02-27 18:08:21
  */
 
 module AHBlite_Decoder
@@ -19,7 +19,7 @@ module AHBlite_Decoder
   parameter Port2_en = 1,
   /************************/
 
-  /*UART enable parameter*/
+  /*GPIO enable parameter*/
   parameter Port3_en = 1,
   /************************/
 
@@ -38,10 +38,10 @@ module AHBlite_Decoder
   /*LCD OUTPUT SELECTION SIGNAL*/
   output wire P2_HSEL,
 
-  /*UART OUTPUT SELECTION SIGNAL*/
+  /*GPIO OUTPUT SELECTION SIGNAL*/
   output wire P3_HSEL, 
 
-  /*UART OUTPUT SELECTION SIGNAL*/
+  /*Camera OUTPUT SELECTION SIGNAL*/
   output wire P4_HSEL
 );
 
@@ -65,12 +65,11 @@ module AHBlite_Decoder
   assign P2_HSEL = (HADDR[31:16] == 16'h4005) ? Port2_en : 1'b0; 
   /***********************************/
 
-  //0X40000010 UART RX DATA
-  //0X40000014 UART TX STATE
-  //0X40000018 UART TX DATA
-  /*Insert UART decoder code there*/
-  assign P3_HSEL = (HADDR[31:4] == 28'h4000010) ? Port3_en : 1'b0; 
-  /***********************************/
+  //0x40000028 OUT  ENABLE
+  //0X40000024 IN DATA
+  //0X40000020 OUT DATA
+  /*Insert GPIO decoder code there*/
+  assign P3_HSEL = (HADDR[31:4] == 28'h4000002) ? Port3_en : 1'd0;
 
   //0X40030000 Camera
   /*Insert Camera decoder code there*/

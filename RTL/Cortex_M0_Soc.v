@@ -2,7 +2,7 @@
  * @Author: Xuejian Sun 
  * @Date: 2023-02-23 10:58:51 
  * @Last Modified by: Xuejian Sun
- * @Last Modified time: 2023-02-25 14:09:48
+ * @Last Modified time: 2023-02-27 20:31:38
  */
 
 module Cortex_M0_Soc (
@@ -12,32 +12,35 @@ module Cortex_M0_Soc (
   input wire SWCLK,
 
   // LCD
-  output wire LCD_CS,
-  output wire LCD_RS,
-  output wire LCD_WR,
-  output wire LCD_RD,
-  output wire LCD_RST,
-  output wire [15:0] LCD_DATA,
-  output wire LCD_BL_CTR,
+  output wire         LCD_CS,
+  output wire         LCD_RS,
+  output wire         LCD_WR,
+  output wire         LCD_RD,
+  output wire         LCD_RST,
+  output wire [15:0]  LCD_DATA,
+  output wire         LCD_BL_CTR,
 
   // UART
   input wire RXD,
   output wire TXD,
 
   // CAMERA
-  output wire CAMERA_PWDN,
-  output wire CAMERA_RST,
-  output wire CAMERA_SCL,
-  inout  wire CAMERA_SDA,
-  input  wire CAMERA_PCLK,
-  input  wire CAMERA_VSYNC,
-  input  wire CAMERA_HREF,
-  input  wire [7:0]CAMERA_DATA,
-  output wire datavalid_test,
+  output wire       CAMERA_PWDN,
+  output wire       CAMERA_RST,
+  output wire       CAMERA_SCL,
+  inout  wire       CAMERA_SDA,
+  input  wire       CAMERA_PCLK,
+  input  wire       CAMERA_VSYNC,
+  input  wire       CAMERA_HREF,
+  input  wire [7:0] CAMERA_DATA,
+  output wire       datavalid_test,
 
   // KEYBOARD
-  input [3:0] col,
-  output [3:0] row
+  input  [3:0] col,
+  output [3:0] row,
+
+  // LED
+  // output wire [7:0] LED
 );
 
   // --------------------
@@ -71,6 +74,8 @@ module Cortex_M0_Soc (
 
   wire RXEV;
   assign RXEV = 1'b0;
+
+  
 
   // --------------------
   // AHB wires

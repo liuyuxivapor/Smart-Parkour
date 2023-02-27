@@ -2,7 +2,7 @@
  * @Author: Xuejian Sun 
  * @Date: 2023-02-23 13:06:14 
  * @Last Modified by: Xuejian Sun
- * @Last Modified time: 2023-02-25 06:56:59
+ * @Last Modified time: 2023-02-27 20:01:46
  */
 
 module Block_RAM #(
@@ -19,7 +19,7 @@ module Block_RAM #(
   reg [31:0] mem [(2**ADDR_WIDTH-1):0];
 
   initial begin
-    $readmemh("Smart-Parkour/Software/keil/code.hex",mem);
+    $readmemh("../Smart-Parkour/Software/keil/code.hex", mem);
   end
 
   always@(posedge clka) begin
