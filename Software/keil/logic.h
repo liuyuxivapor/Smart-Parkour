@@ -16,4 +16,4 @@ void descend_down(uint16_t speed);
 /*以speed像素每秒速度下降*/
 
 uint16_t collide(uint16_t position_player, uint16_t position_obstacle);
-/*判断是否碰撞，碰撞返回1，未碰撞返回0*/
+/*判断是否碰撞，碰撞返回1，未碰撞返回0  test2*/
