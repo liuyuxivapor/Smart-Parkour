@@ -1,6 +1,7 @@
 #include <stdint.h>
 #include <stdio.h>
-#include "code_def.h"
+#include "logic.h"
+
 
 extern uint32_t key0_flag, key1_flag, key2_flag, key3_flag;
 

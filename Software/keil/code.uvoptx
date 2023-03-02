@@ -78,43 +78,6 @@
         <IsCurrentTarget>1</IsCurrentTarget>
       </OPTFL>
       <CpuCode>7</CpuCode>
-      <Books>
-        <Book>
-          <Number>0</Number>
-          <Title>Application Note AN382: ARM Cortex-M0 SMM on V2M-MPS2 (V2M-MPS2)</Title>
-          <Path>D:\Software\Keil_v5\ARM\PACK\Keil\V2M-MPS2_CMx_BSP\1.8.0\Boards/ARM/V2M-MPS2/Documents/DAI0382C_cortex_m0_on_v2m_mps2.pdf</Path>
-        </Book>
-        <Book>
-          <Number>1</Number>
-          <Title>Application Note AN383: ARM Cortex-M0+ SMM on V2M-MPS2 (V2M-MPS2)</Title>
-          <Path>D:\Software\Keil_v5\ARM\PACK\Keil\V2M-MPS2_CMx_BSP\1.8.0\Boards/ARM/V2M-MPS2/Documents/DAI0383C_cortex_m0plus_on_v2m_mps2.pdf</Path>
-        </Book>
-        <Book>
-          <Number>2</Number>
-          <Title>Application Note AN385: ARM Cortex-M3 SMM on V2M-MPS2 (V2M-MPS2)</Title>
-          <Path>D:\Software\Keil_v5\ARM\PACK\Keil\V2M-MPS2_CMx_BSP\1.8.0\Boards/ARM/V2M-MPS2/Documents/DAI0385C_cortex_m3_on_v2m_mps2.pdf</Path>
-        </Book>
-        <Book>
-          <Number>3</Number>
-          <Title>Application Note AN386: ARM Cortex-M4 SMM on V2M-MPS2 (V2M-MPS2)</Title>
-          <Path>D:\Software\Keil_v5\ARM\PACK\Keil\V2M-MPS2_CMx_BSP\1.8.0\Boards/ARM/V2M-MPS2/Documents/DAI0386C_cortex_m4_on_v2m_mps2.pdf</Path>
-        </Book>
-        <Book>
-          <Number>4</Number>
-          <Title>Application Note AN399: ARM Cortex-M7 SMM on V2M-MPS2 (V2M-MPS2)</Title>
-          <Path>D:\Software\Keil_v5\ARM\PACK\Keil\V2M-MPS2_CMx_BSP\1.8.0\Boards/ARM/V2M-MPS2/Documents/DAI0399C_cortex_m7_on_v2m_mps2.pdf</Path>
-        </Book>
-        <Book>
-          <Number>5</Number>
-          <Title>Cortex-M System Design Kit Technical Reference Manual (V2M-MPS2)</Title>
-          <Path>D:\Software\Keil_v5\ARM\PACK\Keil\V2M-MPS2_CMx_BSP\1.8.0\Boards/ARM/V2M-MPS2/Documents/DDI0479C_cortex_m_system_design_kit_r1p0_trm.pdf</Path>
-        </Book>
-        <Book>
-          <Number>6</Number>
-          <Title>Cortex-M Prototyping System (web page) (V2M-MPS2)</Title>
-          <Path>http://www.arm.com/products/tools/development-boards/versatile-express/cortex-m-prototyping-system.php</Path>
-        </Book>
-      </Books>
       <DebugOpt>
         <uSim>1</uSim>
         <uTrg>0</uTrg>
@@ -137,6 +100,9 @@
         <tRSysVw>1</tRSysVw>
         <sRunDeb>0</sRunDeb>
         <sLrtime>0</sLrtime>
+        <bEvRecOn>1</bEvRecOn>
+        <bSchkAxf>0</bSchkAxf>
+        <bTchkAxf>0</bTchkAxf>
         <nTsel>0</nTsel>
         <sDll></sDll>
         <sDllPa></sDllPa>
@@ -189,6 +155,17 @@
       </DebugFlag>
       <LintExecutable></LintExecutable>
       <LintConfigFile></LintConfigFile>
+      <bLintAuto>0</bLintAuto>
+      <bAutoGenD>0</bAutoGenD>
+      <LntExFlags>0</LntExFlags>
+      <pMisraName></pMisraName>
+      <pszMrule></pszMrule>
+      <pSingCmds></pSingCmds>
+      <pMultCmds></pMultCmds>
+      <pMisraNamep></pMisraNamep>
+      <pszMrulep></pszMrulep>
+      <pSingCmdsp></pSingCmdsp>
+      <pMultCmdsp></pMultCmdsp>
       <DebugDescription>
         <Enable>1</Enable>
         <EnableLog>0</EnableLog>
@@ -209,7 +186,6 @@
       <FileNumber>1</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
-      <Focus>0</Focus>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
       <PathWithFileName>.\camera.c</PathWithFileName>
@@ -222,7 +198,6 @@
       <FileNumber>2</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
-      <Focus>0</Focus>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
       <PathWithFileName>.\code_def.c</PathWithFileName>
@@ -235,7 +210,6 @@
       <FileNumber>3</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
-      <Focus>0</Focus>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
       <PathWithFileName>.\lcd.c</PathWithFileName>
@@ -248,7 +222,6 @@
       <FileNumber>4</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
-      <Focus>0</Focus>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
       <PathWithFileName>.\main.c</PathWithFileName>
@@ -261,7 +234,6 @@
       <FileNumber>5</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
-      <Focus>0</Focus>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
       <PathWithFileName>.\systick.c</PathWithFileName>
@@ -282,7 +254,6 @@
       <FileNumber>6</FileNumber>
       <FileType>5</FileType>
       <tvExp>0</tvExp>
-      <Focus>0</Focus>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
       <PathWithFileName>.\lcdfont.h</PathWithFileName>
@@ -295,7 +266,6 @@
       <FileNumber>7</FileNumber>
       <FileType>5</FileType>
       <tvExp>0</tvExp>
-      <Focus>0</Focus>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
       <PathWithFileName>.\camera_initial_reg_file.h</PathWithFileName>
@@ -308,7 +278,6 @@
       <FileNumber>8</FileNumber>
       <FileType>5</FileType>
       <tvExp>0</tvExp>
-      <Focus>0</Focus>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
       <PathWithFileName>.\code_def.h</PathWithFileName>
@@ -329,7 +298,6 @@
       <FileNumber>9</FileNumber>
       <FileType>2</FileType>
       <tvExp>0</tvExp>
-      <Focus>0</Focus>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
       <PathWithFileName>.\startup_CMSDK_CM0.s</PathWithFileName>
