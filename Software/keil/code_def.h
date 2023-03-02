@@ -263,22 +263,22 @@ extern uint16_t  BACK_COLOR;
 #define SSD_VT 	(SSD_VER_RESOLUTION+SSD_VER_BACK_PORCH+SSD_VER_FRONT_PORCH)
 #define SSD_VPS (SSD_VER_BACK_PORCH)  	
 
-void LCD_Init(uint8_t dir);									
-void LCD_DisplayOn(void);													
-void LCD_DisplayOff(void);													
-void LCD_Clear(uint16_t Color);	 											
+void LCD_Init(uint8_t dir);//初始化									
+void LCD_DisplayOn(void);//开启显示													
+void LCD_DisplayOff(void);//关闭显示器													
+void LCD_Clear(uint16_t Color);//清除	 											
 void LCD_SetCursor(uint16_t Xpos, uint16_t Ypos);							
 void LCD_DrawPoint(uint16_t x,uint16_t y);									
 void LCD_Fast_DrawPoint(uint16_t x,uint16_t y,uint16_t color);							
-uint16_t  LCD_ReadPoint(uint16_t x,uint16_t y); 										
+// uint16_t  LCD_ReadPoint(uint16_t x,uint16_t y); 										
 void LCD_Draw_Circle(uint16_t x0,uint16_t y0,uint8_t r);						 		
 void LCD_DrawLine(uint16_t x1, uint16_t y1, uint16_t x2, uint16_t y2);					
 void LCD_DrawRectangle(uint16_t x1, uint16_t y1, uint16_t x2, uint16_t y2);		   		
 void LCD_Fill(uint16_t sx,uint16_t sy,uint16_t ex,uint16_t ey,uint16_t color);		   	
-void LCD_Color_Fill(uint16_t sx,uint16_t sy,uint16_t ex,uint16_t ey,uint16_t *color);	
-void LCD_ShowChar(uint16_t x,uint16_t y,uint8_t num,uint8_t size,uint8_t mode);			
+void LCD_Color_Fill(uint16_t sx,uint16_t sy,uint16_t ex,uint16_t ey,uint16_t *color);//填充渐变色	
+void LCD_ShowChar(uint16_t x,uint16_t y,uint8_t num,uint8_t size,uint8_t mode);//mode置1			
 void LCD_ShowNum(uint16_t x,uint16_t y,uint32_t num,uint8_t len,uint8_t size);  					
-void LCD_ShowxNum(uint16_t x,uint16_t y,uint32_t num,uint8_t len,uint8_t size,uint8_t mode);				
+void LCD_ShowxNum(uint16_t x,uint16_t y,uint32_t num,uint8_t len,uint8_t size,uint8_t mode);			//??	
 void LCD_ShowString(uint16_t x,uint16_t y,uint16_t width,uint16_t height,uint8_t size,uint8_t *p);		
 
 void LCD_WriteReg(uint16_t LCD_Reg, uint16_t LCD_RegValue);
@@ -287,5 +287,5 @@ void LCD_WriteRAM_Prepare(void);
 void LCD_WriteRAM(uint16_t RGB_Code);
 void LCD_SSD_BackLightSet(uint8_t pwm);							
 void LCD_Scan_Dir(uint8_t dir);									
-void LCD_Display_Dir(uint8_t dir);
+void LCD_Display_Dir(uint8_t dir);//设置显示方向
 void LCD_Set_Window(uint16_t sx,uint16_t sy,uint16_t width,uint16_t height);
