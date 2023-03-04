@@ -538,7 +538,13 @@ module Cortex_M0_Soc (
 
   assign bps_en = bps_en_rx | bps_en_tx;
 
-  clkuart_pwm clkuart_pwm(
+  clkuart_pwm #(
+    `ifdef SIMULATION
+    .BPS_PARA(16)
+    `else
+    .BPS_PARA(347)
+    `endif
+  ) clkuart_pwm(
     .clk(clk),
     .RSTn(cpuresetn),
     .clk_uart(clk_uart),
