@@ -160,7 +160,7 @@
             <CpuDllArguments></CpuDllArguments>
             <PeripheralDll></PeripheralDll>
             <PeripheralDllArguments></PeripheralDllArguments>
-            <InitializationFile></InitializationFile>
+            <InitializationFile>.\code.ini</InitializationFile>
             <Driver>BIN\UL2CM3.DLL</Driver>
           </TargetDlls>
         </DebugOption>
@@ -433,6 +433,11 @@
               <FileType>1</FileType>
               <FilePath>.\systick.c</FilePath>
             </File>
+            <File>
+              <FileName>buzzer.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\buzzer.c</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
@@ -456,7 +461,7 @@
           </Files>
         </Group>
         <Group>
-          <GroupName>Startup</GroupName>
+          <GroupName>startup</GroupName>
           <Files>
             <File>
               <FileName>startup_CMSDK_CM0.s</FileName>

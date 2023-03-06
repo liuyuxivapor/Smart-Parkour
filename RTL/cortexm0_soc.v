@@ -2,7 +2,7 @@
  * @Author: Xuejian Sun 
  * @Date: 2023-02-23 10:58:51 
  * @Last Modified by: Xuejian Sun
- * @Last Modified time: 2023-02-27 20:31:38
+ * @Last Modified time: 2023-03-06 18:29:42
  */
 
 module Cortex_M0_Soc (
@@ -41,6 +41,9 @@ module Cortex_M0_Soc (
 
   // LED
   // output wire [7:0] LED
+
+  // Buzzer
+  output wire beep
 );
 
   // --------------------
@@ -74,8 +77,6 @@ module Cortex_M0_Soc (
 
   wire RXEV;
   assign RXEV = 1'b0;
-
-  
 
   // --------------------
   // AHB wires
@@ -254,6 +255,20 @@ module Cortex_M0_Soc (
   wire    [31:0]  HRDATA_P4;
   wire            HRESP_P4;
 
+  wire            HSEL_P5;
+  wire    [31:0]  HADDR_P5;
+  wire    [2:0]   HBURST_P5;
+  wire            HMASTLOCK_P5;
+  wire    [3:0]   HPROT_P5;
+  wire    [2:0]   HSIZE_P5;
+  wire    [1:0]   HTRANS_P5;
+  wire    [31:0]  HWDATA_P5;
+  wire            HWRITE_P5;
+  wire            HREADY_P5;
+  wire            HREADYOUT_P5;
+  wire    [31:0]  HRDATA_P5;
+  wire            HRESP_P5;
+
   AHBlite_Interconnect Interconncet(
     .HCLK           (clk),
     .HRESETn        (cpuresetn),
@@ -344,7 +359,22 @@ module Cortex_M0_Soc (
     .HREADY_P4      (HREADY_P4),
     .HREADYOUT_P4   (HREADYOUT_P4),
     .HRDATA_P4      (HRDATA_P4),
-    .HRESP_P4       (HRESP_P4)
+    .HRESP_P4       (HRESP_P4),
+
+    // P5
+    .HSEL_P5        (HSEL_P5),
+    .HADDR_P5       (HADDR_P5),
+    .HBURST_P5      (HBURST_P5),
+    .HMASTLOCK_P5   (HMASTLOCK_P5),
+    .HPROT_P5       (HPROT_P5),
+    .HSIZE_P5       (HSIZE_P5),
+    .HTRANS_P5      (HTRANS_P5),
+    .HWDATA_P5      (HWDATA_P5),
+    .HWRITE_P5      (HWRITE_P5),
+    .HREADY_P5      (HREADY_P5),
+    .HREADYOUT_P5   (HREADYOUT_P5),
+    .HRDATA_P5      (HRDATA_P5),
+    .HRESP_P5       (HRESP_P5)
   );
 
   // --------------------
@@ -507,6 +537,32 @@ module Cortex_M0_Soc (
   );
 
   // --------------------
+  // AHB Buzzer
+  // --------------------
+
+  wire [1:0] music_select;
+  wire music_start;
+
+  AHBlite_Buzzermusic Buzzer_Interface(
+    /* Connect to Interconnect Port 5 */
+    .HCLK           (clk),
+    .HRESETn        (cpuresetn),
+    .HSEL           (HSEL_P5),
+    .HADDR          (HADDR_P5),
+    .HPROT          (HPROT_P5),
+    .HSIZE          (HSIZE_P5),
+    .HTRANS         (HTRANS_P5),
+    .HWDATA         (HWDATA_P5),
+    .HWRITE         (HWRITE_P5),
+    .HRDATA         (HRDATA_P5),
+    .HREADY         (HREADY_P5),
+    .HREADYOUT      (HREADYOUT_P5),
+    .HRESP          (HRESP_P5),
+    .music_select   (music_select),
+    .music_start    (music_start)
+  );
+
+  // --------------------
   // RAM
   // --------------------
 
@@ -588,6 +644,15 @@ module Cortex_M0_Soc (
     .VSYNC                          (CAMERA_VSYNC),
     .HREF                           (CAMERA_HREF),
     .datavalid_test                 (datavalid_test)
+  );
+
+  // --------------------
+  // BUZZER
+  // --------------------
+  buzzer buzzer(
+    .clk      (clk),
+    .rst_n    (cpuresetn),
+    .beep     (beep)
   );
   
 endmodule
