@@ -3,6 +3,10 @@
 #include "code_def.h"
 #define LCD_Y 480  //屏幕纵向像素高度
 #define LCD_X 800  //屏幕横向像素宽度
+#define bird_vis_width 50
+#define bird_vis_height 50
+#define bird_clo_width 40
+#define bird_clo_height 40
 
 /*本文件定义游戏运行逻辑*/
 
@@ -15,9 +19,11 @@ struct Logic_game_event{
 
 struct Logic_player_bird_position{
     //uint16_t position;
-    uint16_t edge_x[4];
-    uint16_t edge_y[4];
-};//玩家所控制的鸟的碰撞体积,从左上角开始顺时针为0，1，2，3
+    uint16_t edge_x[4];    //视觉边界
+    uint16_t edge_y[4];    //视觉边界
+    uint16_t clo_edge_x[4];//碰撞边界
+    uint16_t clo_edge_y[4];//碰撞边界
+};//玩家所控制的鸟的视觉边界和碰撞体积,从左上角开始顺时针为0，1，2，3
 
 struct Logic_ocstacle_position{
     uint16_t ocstacle_id;
@@ -28,7 +34,7 @@ struct Logic_ocstacle_position{
     struct Logic_ocstacle_position *next;
 };//链表,记录每个条的ID、横坐标和高度,ID每局游戏前置零,最后碰撞的条的ID即为得分
 
-uint16_t logic_random_num(uint16_t max_num, uint16_t min_num);
+uint16_t logic_random_num(uint16_t max_num, uint16_t min_num, uint64_t *seed_x);
 /*利用LCG算法生成伪随机数，返回随机数值*/
 
 void logic_rise_up(uint16_t speed, struct Logic_player_bird_position *bird_position);

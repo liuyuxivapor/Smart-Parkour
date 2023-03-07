@@ -1,6 +1,8 @@
 #include <stdint.h>
 #include <stdio.h>
 #include "code_def.h"
+#include "cartoon.h"
+#include "logic.h"
 /*本文件定义游戏动画*/
 
 uint16_t cartoon_draw_bird(uint16_t size);
