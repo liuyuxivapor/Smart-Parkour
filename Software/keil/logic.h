@@ -1,3 +1,6 @@
+#ifndef _LOGIC_H
+#define _LOGIC_H
+
 #include <stdint.h>
 #include <stdio.h>
 #include "code_def.h"
@@ -49,3 +52,5 @@ uint16_t logic_collide(struct Logic_player_bird_position *bird_position, struct 
 
 //uint16_t logic_fly_speed(uint16_t position);
 /*根据坐标计算向左或向右飞行速度*/
+
+#endif

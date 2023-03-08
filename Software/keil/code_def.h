@@ -1,3 +1,6 @@
+#ifndef _CODE_DEF_H
+#define _CODE_DEF_H
+
 #include <stdint.h>
 
 //INTERRUPT DEF
@@ -289,3 +292,6 @@ void LCD_SSD_BackLightSet(uint8_t pwm);
 void LCD_Scan_Dir(uint8_t dir);									
 void LCD_Display_Dir(uint8_t dir);//设置显示方向
 void LCD_Set_Window(uint16_t sx,uint16_t sy,uint16_t width,uint16_t height);
+
+
+#endif
