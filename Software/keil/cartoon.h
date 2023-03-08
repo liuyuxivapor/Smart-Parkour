@@ -34,7 +34,7 @@ uint16_t cartoon_draw_bar(uint16_t type, uint16_t start_point, uint16_t height, 
 /*绘制一个普通条，type规定类型（1为上方，0为下方）,start_point规定起始点（最左端最边缘处）,
 height规定高度，width规定宽度，生成成功返回1，生成失败返回0*/
 
-void cartoon_move_forward(uint16_t speed);
+void cartoon_move_forward(uint16_t speed,struct Cartoon_pictures *picture);
 //场景向左移动,模拟鸟飞行,输入移动数据
 
 uint16_t cartoon_fly_right(uint16_t speed);

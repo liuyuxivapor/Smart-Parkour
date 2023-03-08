@@ -9,8 +9,9 @@ void cartoon_bird_init(uint16_t *bird_view[BIRD_VIEW_Y][BIRD_VIEW_X])
             bird_view[i][j]=0;
         }
     }
-
 }
+//鸟的初始化
+
 uint16_t cartoon_draw_bird(uint16_t *p_bird_view[BIRD_VIEW_Y][BIRD_VIEW_X],uint16_t start_point[2])
 {
     uint16_t *bird_view=p_bird_view;
@@ -68,18 +69,39 @@ uint16_t cartoon_draw_bar(uint16_t type, uint16_t start_point, uint16_t height, 
 {
     uint16_t start_point_x = start_point;
     uint16_t start_point_y = 0;
-    uint16_t end_point_x = 0;
-    uint16_t end_point_y = 0;
-    if(type==0)
+    uint16_t end_point_x = start_point_x + ocstacle_width;
+    uint16_t end_point_y = height;
+    switch(type)
     {
-        start_point_y = 0;
-        end_point_x = start_point_x + ocstacle_width;
-        end_point_y = height;
+        case 0:start_point_y = 0;
+            break;
+        case 1:start_point_y = LCD_Y;
+            break;
+        default:break;
     }
-    else if(type==1)
+    LCD_Fill(start_point_x, start_point_y, end_point_x, end_point_y, RED);
+    return 1;
+}
+/*绘制一个普通条，type规定类型（1为上方，0为下方）,start_point规定起始点（最左端最边缘处）,
+height规定高度，width规定宽度，生成成功返回1，生成失败返回0*/
+
+void cartoon_move_forward(uint16_t speed,struct Cartoon_pictures *picture)
+{
+    struct Logic_ocstacle_position *p_oc_pos = picture->head;
+    do
     {
-        start_point_y = LCD_Y;
+        if(p_oc_pos->oc_edge_position<speed)
+        {
+            p_oc_pos->oc_edge_position = 0;
+            p_oc_pos = p_oc_pos->next;
+        }
+        else
+        {
+            p_oc_pos->oc_edge_position = p_oc_pos->oc_edge_position-speed;
+            p_oc_pos = p_oc_pos->next;
+        }
         
-    }
+    }while(p_oc_pos->next!=NULL)
 
 }
+//场景（障碍物）向左移动,模拟鸟飞行,输入移动数据
