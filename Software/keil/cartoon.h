@@ -1,9 +1,19 @@
 #include <stdint.h>
 #include <stdio.h>
 #include "code_def.h"
-#include "cartoon.h"
 #include "logic.h"
 /*本文件定义游戏动画*/
+
+struct Cartoon_bird_vision
+{
+
+};
+struct Cartoon_pictures
+{
+    struct Logic_player_bird_position bird_position;
+    struct Logic_ocstacle_position *head;
+};
+
 
 uint16_t cartoon_draw_bird(uint16_t size);
 //画鸟，输入大小挡位，共三种挡位，绘制成功返回1，否则返回0
@@ -21,6 +31,6 @@ uint16_t cartoon_fly_right(uint16_t speed);
 uint16_t cartoon_fly_left(void);
 //玩家控制鸟向左飞行,向左飞行匀速
 
-void cartoon_refresh(void);
+void cartoon_refresh(struct Cartoon_pictures picture_next);
 //刷新显示下一张图片
 

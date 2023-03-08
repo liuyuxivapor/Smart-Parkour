@@ -7,6 +7,7 @@
 #define bird_vis_height 50
 #define bird_clo_width 40
 #define bird_clo_height 40
+#define ocstacle_width 100
 
 /*本文件定义游戏运行逻辑*/
 
@@ -46,5 +47,5 @@ void logic_descend_down(uint16_t speed, struct Logic_player_bird_position *bird_
 uint16_t logic_collide(struct Logic_player_bird_position *bird_position, struct Logic_ocstacle_position *oc_pos, struct Logic_game_event *logic);
 /*判断是否碰撞，碰撞返回1，未碰撞返回0*/
 
-uint16_t logic_fly_right_speed(uint16_t position);
-/*根据坐标计算向右飞行速度*/
+//uint16_t logic_fly_speed(uint16_t position);
+/*根据坐标计算向左或向右飞行速度*/
