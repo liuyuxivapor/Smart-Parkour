@@ -2,6 +2,7 @@
 #define _CODE_DEF_H
 
 #include <stdint.h>
+#include <stdbool.h>
 
 //INTERRUPT DEF
 #define NVIC_CTRL_ADDR (*(volatile unsigned *)0xe000e100)
@@ -117,10 +118,10 @@ uint8_t Timer_Stop(uint32_t *duration_t,uint32_t start_t);
 void delay(uint32_t time);
 
 // INTERUPT
-void KEY0(void);
-void KEY1(void);
-void KEY2(void);
-void KEY3(void);
+// void KEY0(void);
+// void KEY1(void);
+// void KEY2(void);
+// void KEY3(void);
 
 // CAMERA
 void Set_CAMERA_SDA_W(void);
@@ -293,5 +294,22 @@ void LCD_Scan_Dir(uint8_t dir);
 void LCD_Display_Dir(uint8_t dir);//设置显示方向
 void LCD_Set_Window(uint16_t sx,uint16_t sy,uint16_t width,uint16_t height);
 
+//Buzzer DEF
+typedef struct
+{
+    volatile uint32_t BuzzerBGMAddr;
+    volatile uint32_t BuzzerBGMCtr;
+    volatile uint32_t BuzzerSoundAddr;
+    volatile uint32_t BuzzerSoundCtr;
+}BuzzerStr;
+
+#define Buzzer_BASE 0x40100000
+#define Buzzer ((BuzzerStr *)Buzzer_BASE)
+
+void Play_BGM(char* BeginAddr, bool isCyl);
+void Stop_BGM(void);
+void Start_BGM(void);
+void Reset_BGM(void);
+void Play_Sound(char* BeginAddr,uint32_t Pri);
 
 #endif

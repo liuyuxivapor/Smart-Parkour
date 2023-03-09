@@ -2,7 +2,7 @@
  * @Author: Xuejian Sun 
  * @Date: 2023-02-23 11:00:16 
  * @Last Modified by: Xuejian Sun
- * @Last Modified time: 2023-02-23 11:01:57
+ * @Last Modified time: 2023-03-04 20:24:23
  */
 
 module clkuart_pwm #(parameter BPS_PARA = 347)
