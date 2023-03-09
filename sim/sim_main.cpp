@@ -1,124 +1,130 @@
-// DESCRIPTION: Verilator: Verilog example module
-//
-// This file ONLY is placed under the Creative Commons Public Domain, for
-// any use, without warranty, 2017 by Wilson Snyder.
-// SPDX-License-Identifier: CC0-1.0
-//======================================================================
-
-// For std::unique_ptr
-#include <memory>
-
-// Include common routines
 #include <verilated.h>
+#include <iostream>
+#include <fstream>
+#include "VXC_SoC.h"
+#include "testbench.h"
+#include "sim_uart.h"
+#include "cxxopts.hpp"
+using namespace std;
 
-// Include model header, generated from Verilating "top.v"
-#include "Vtop.h"
+// Global Variable
+unsigned long sim_cycle = 15000; // 仿真周期数
+bool trace = false;
+bool running_trace = false;
+bool VGA_enable = false;
+int port = 2333;
+#define MAX_CYCLE 9999999999
 
-#if VM_TRACE
-# include <verilated_vcd_c.h>	// Trace file format header
-#endif
 
-// Legacy function required only so linking works on Cygwin and MSVC++
-static uint64_t trace_count = 0;
-double sc_time_stamp() { return trace_count; }
 
-int main(int argc, char** argv, char** env) {
-  // This is a more complicated example, please also see the simpler examples/make_hello_c.
+class TB_XC_SoC : public TESTBENCH<VXC_SoC>
+{
+private:
+public:
+	// VGAWIN m_vga;
+	UARTSIM m_uart;
+	int uart0;
+	bool m_running_trace;
+private:
+	void init(void)
+	{
+		Glib::signal_idle().connect(sigc::mem_fun((*this), &TB_XC_SoC::on_tick));
+	}
 
-  // Prevent unused variable warnings
-  if (false && argc && argv && env) {}
+public:
+	TB_XC_SoC(bool running_trace,bool enable,int port, unsigned long count, bool wave) : m_vga(800, 600),m_uart(port), TESTBENCH<VXC_SoC>(count, wave)
+	{
+		m_running_trace = running_trace;
+		uart0=1;
+		m_uart.setup(16); //16 means baudrate for simulation
+		opentrace("/home/zycccccc/vcd_file/XC-SoC/mcutest.vcd");
+		if (enable)
+			init();
+	}
+	void tick(void)
+	{
+		static int r = 0, g = 0, b = 0;
+		r = int(255.0f * ((m_core->vga_data >> 6) / 8.0f));
+		g = int(255.0f * (((m_core->vga_data >> 3) & 0x7) / 8.0f));
+		b = int(255.0f * ((m_core->vga_data & 0x7) / 8.0f));
+		m_vga((m_core->vsync) ? 1 : 0, (m_core->hsync) ? 1 : 0,
+			  r,
+			  g,
+			  b);
+		uart0 = m_uart((m_core->TXD));
+		m_core->RXD = uart0;
+		if(m_running_trace&&(!m_trace)){
+			if(m_uart.check_fifo("!@#$")){
+				trace = true;
+				opentrace("/home/zycccccc/vcd_file/XC-SoC/mcutest.vcd");
+			}
+		}
+		TESTBENCH<VXC_SoC>::tick();
+	}
 
-  // Set debug level, 0 is off, 9 is highest presently used
-  // May be overridden by commandArgs argument parsing
-  Verilated::debug(0);
+	bool on_tick(void)
+	{
+		tick();
+		if (done())
+			exit(0);
+		return true;
+	}
+};
 
-  // Randomization reset policy
-  // May be overridden by commandArgs argument parsing
-  Verilated::randReset(2);
+int main(int argc, char **argv)
+{
+	Gtk::Main main_instance(argc, argv);
+	// arguments init
+	cxxopts::Options options("sim_main", "Verilator Simulation.");
+	options
+		.set_width(70)
+		.set_tab_expansion()
+		.allow_unrecognised_options()
+		.add_options()("c,cycle", "Simulation cycles", cxxopts::value<unsigned long>())("p,port", "Uart TCP port, 0 means stdio", cxxopts::value<int>())("t,trace", "Simulation trace", cxxopts::value<bool>())("r,running_trace", "Simulation running trace", cxxopts::value<bool>())("v,vga", "Enable VGA simulation,800*600", cxxopts::value<bool>())("h,help", "Print help");
+	// arguments parse
+	auto result = options.parse(argc, argv);
+	if (result.count("help"))
+	{
+		std::cout << options.help({"", "Group"}) << std::endl;
+		exit(0);
+	}
+	// Verilated::commandArgs(argc, argv);
+	try
+	{
+		sim_cycle = result["cycle"].as<unsigned long>();
+		if (sim_cycle == 0)
+			sim_cycle = MAX_CYCLE;
+		trace = result["trace"].as<bool>();
+		running_trace = result["running_trace"].as<bool>();
+		VGA_enable = result["vga"].as<bool>();
+		port = result["port"].as<int>();c
+		if (port > 65535)
+			port = 0;
+	}
+	catch (const cxxopts::OptionException &e)
+	{
+		std::cout << "error parsing options: " << e.what() << std::endl;
+		exit(1);
+	}
 
-  // Pass arguments so Verilated code can see them, e.g. $value$plusargs
-  // This needs to be called before you create any model
-  Verilated::commandArgs(argc, argv);
-
-  // Construct the Verilated model, from Vtop.h generated from Verilating "top.v".
-  // Using unique_ptr is similar to "Vtop* top = new Vtop" then deleting at end.
-  // "TOP" will be the hierarchical name of the module.
-  const std::unique_ptr<Vtop> top{new Vtop{}};
-
-  #if VM_TRACE    // If verilator was invoked with --trace
-      // Verilator must compute traced signals
-      Verilated::traceEverOn(true);
-      std::unique_ptr<VerilatedVcdC> tfp(new VerilatedVcdC());
-      top->trace(tfp.get(), 4);	// Trace 4 levels of hierarchy
-      tfp->open("dump.vcd");	    // Open the dump file
-  #endif
-
-  // Set Vtop's input signals
-  top->clock = 1;
-  top->reset = 0;
-  top->eval();
-
-  top->clock = 0;
-  top->reset = 1;
-  top->eval();
-
-  top->clock = 1;
-  top->reset = 1;
-  top->eval();
-
-  top->clock = 0;
-  top->reset = 0;
-  top->eval();
-
-  // Simulate until $finish
-  while (!Verilated::gotFinish()) {
-    // Historical note, before Verilator 4.200 Verilated::gotFinish()
-    // was used above in place of contextp->gotFinish().
-    // Most of the contextp-> calls can use Verilated:: calls instead;
-    // the Verilated:: versions simply assume there's a single context
-    // being used (per thread).  It's faster and clearer to use the
-    // newer contextp-> versions.
-
-    //Verilated::timeInc(1);  // 1 timeprecision period passes...
-    // Historical note, before Verilator 4.200 a sc_time_stamp()
-    // function was required instead of using timeInc.  Once timeInc()
-    // is called (with non-zero), the Verilated libraries assume the
-    // new API, and sc_time_stamp() will no longer work.
-
-    // Evaluate model
-    // (If you have multiple models being simulated in the same
-    // timestep then instead of eval(), call eval_step() on each, then
-    // eval_end_step() on each. See the manual.)
-    top->clock = 1;
-    top->eval();
-
-    #if VM_TRACE
-      tfp->dump(2 * trace_count);	// Create waveform trace for this timestamp
-    #endif
-
-    top->clock = 0;
-    top->eval();
-
-    #if VM_TRACE
-	    tfp->dump(2 * trace_count + 1);	// Create waveform trace for this timestamp
-    #endif
-
-    ++trace_count;
-  }
-
-  // Final model cleanup
-  top->final();
-  #if VM_TRACE
-    tfp->close();
-  #endif
-
-  // Coverage analysis (calling write only after the test is known to pass)
-  #if VM_COVERAGE
-    Verilated::mkdir("logs");
-    //Verilated::coveragep()->write("logs/coverage.dat");
-  #endif
-
-  // Return good completion status
-  // Don't use exit() or destructor won't get called
-  return 0;
+	TB_XC_SoC *top = new TB_XC_SoC(running_trace,VGA_enable,port, sim_cycle, trace&(!running_trace));
+	
+	top->reset();
+	if (VGA_enable)
+	{
+		std::cout << "***VGA ENABLED***" << std::endl;
+		Gtk::Main::run(top->m_vga);
+	}
+	else
+	{
+		std::cout << "***VGA NOT ENABLED***" << std::endl;
+		while (!top->done())
+		{
+			top->tick();
+		}
+	}
+	top->close();
+	delete top;
+	exit(0);
+	return 0;
 }

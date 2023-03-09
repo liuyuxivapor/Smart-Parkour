@@ -2,7 +2,7 @@
  * @Author: Xuejian Sun 
  * @Date: 2023-03-06 10:27:21 
  * @Last Modified by: Xuejian Sun
- * @Last Modified time: 2023-03-06 10:36:39
+ * @Last Modified time: 2023-03-08 11:14:43
  */
 
 module AHBlite_Decoder
@@ -27,8 +27,8 @@ module AHBlite_Decoder
   parameter Port4_en = 1,
   /************************/
 
-  /*UART enable parameter*/
-  parameter Port5_en = 1
+  /*Buzzer enable parameter*/
+  parameter Port5_en = 0
   /************************/
 )(
   input [31:0] HADDR,
@@ -48,7 +48,7 @@ module AHBlite_Decoder
   /*Camera OUTPUT SELECTION SIGNAL*/
   output wire P4_HSEL,
 
-  /*UART OUTPUT SELECTION SIGNAL*/
+  /*Buzzer OUTPUT SELECTION SIGNAL*/
   output wire P5_HSEL
 );
 
