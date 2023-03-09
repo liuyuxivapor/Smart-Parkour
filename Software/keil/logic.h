@@ -20,7 +20,7 @@ struct Logic_game_event{
     uint16_t Collide_return;//判断是否碰撞返回值,为1时碰撞，为0时未碰撞
     uint16_t Pause;//暂停，为0时暂停，为1时游戏继续进行
     uint16_t End;//游戏结束，为0时结束，为1时游戏继续进行
-    uint16_t  Score;//得分
+    uint16_t Score;//得分
 };//游戏相关事件，单局游戏中结构体只建立一次
 
 struct Logic_player_bird_position{
@@ -49,10 +49,16 @@ void logic_rise_up(uint16_t speed, struct Logic_player_bird_position *bird_posit
 void logic_descend_down(uint16_t speed, struct Logic_player_bird_position *bird_position);
 /*以speed像素每秒速度下降*/
 
+//void logic_fly_right(uint16_t speed, struct Logic_player_bird_position *bird_position);
+///*以speed像素每秒速度向右移动*/
+//
+//void logic_fly_left(uint16_t speed, struct Logic_player_bird_position* bird_position);
+///*以speed像素每秒速度向左移动*/
+
 uint16_t logic_collide(struct Logic_player_bird_position *bird_position, struct Logic_ocstacle_position *oc_pos, struct Logic_game_event *logic);
 /*判断是否碰撞，碰撞返回1，未碰撞返回0*/
 
 //uint16_t logic_fly_speed(uint16_t position);
-/*根据坐标计算向左或向右飞行速度*/
+///*根据坐标计算向左或向右飞行速度*/
 
 #endif

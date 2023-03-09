@@ -103,6 +103,7 @@ uint16_t logic_collide(struct Logic_player_bird_position *bird_position, struct 
 }
 /*判断是否碰撞，碰撞返回1，未碰撞返回0*/
 
-// uint16_t logic_fly_right_speed(uint16_t position)
-// {
-// }
+//uint16_t logic_fly_right_speed(struct Logic_player_bird_position *bird_pos)
+//{
+//    
+//}
