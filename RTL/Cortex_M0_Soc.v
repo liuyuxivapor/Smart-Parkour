@@ -37,7 +37,7 @@ module Cortex_M0_Soc (
 
   // KEYBOARD
   input  [3:0] col,
-  output [3:0] row,
+  output [3:0] row
 
   // LED
   // output wire [7:0] LED
@@ -557,7 +557,7 @@ module Cortex_M0_Soc (
     .RSTn(cpuresetn),
     .RXD(RXD),
     .data(UART_RX_data),
-    .interrupt(interrupt_UART),
+    .irq(interrupt_UART),
     .bps_en(bps_en_rx)
   );
 
