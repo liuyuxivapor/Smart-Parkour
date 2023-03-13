@@ -5,7 +5,7 @@
  * @Last Modified time: 2023-03-04 20:24:08
  */
 
-module Keyboard(
+module keyboard(
   input HCLK,
   input HRESETn,
   input [3:0] col,

@@ -1,7 +1,7 @@
 #include <verilated.h>
 #include <iostream>
 #include <fstream>
-#include "VXC_SoC.h"
+#include "VC_SoC.h"
 #include "testbench.h"
 #include "sim_uart.h"
 #include "cxxopts.hpp"

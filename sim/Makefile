@@ -10,7 +10,7 @@
 SIMULATOR  = verilator
 
 # RTL source
-RTL_SRC = $(wildcard ../RTL/*.v)
+RTL_SRC = $(wildcard ../RTL/*.v ../RTL/buzzer/*.v)
 
 # verilator option
 WARE_IGNORE = --Wno-width --Wno-stmtdly --Wno-initialdly --Wno-combdly --Wno-unoptflat --Wno-pinmissing
@@ -29,10 +29,10 @@ sim     : sim_$(SIMULATOR)
 all     : all_$(SIMULATOR)
 
 gtk		:
-	gtkwave.exe `wslpath -m ~`/vcd_file/XC-SoC/mcutest.vcd &
+	gtkwave.exe `wslpath -m ~`/vcd_file/VC-SoC/mcutest.vcd &
 # ------- verilator -----------
 CXX	:= g++
-CPP_SRC := ./src_verilator/sim_main.cpp ./src_verilator/sim_uart.cpp
+CPP_SRC := ./sim_main.cpp ./sim_uart.cpp
 VERILATOR_ROOT ?= $(shell bash -c 'verilator -V|grep VERILATOR_ROOT | head -1 | sed -e " s/^.*=\s*//"')
 VROOT   := $(VERILATOR_ROOT)
 INCS	:= -I./obj_dir/ -I$(VROOT)/include 
@@ -66,11 +66,11 @@ sim_main:
 sim_verilator : obj_dir/sim_main.o obj_dir/sim_uart.o obj_dir/VC_SoC__ALL.a obj_dir/verilated.o obj_dir/verilated_vcd_c.o
 	g++ -std=c++11 $(CFLAGS) $^ $(GFXLIBS) -o ./sim_main
 
-obj_dir/sim_main.o: ./src_verilator/sim_main.cpp ./src_verilator/testbench.h ./src_verilator/sim_uart.h
-obj_dir/sim_uart.o: ./src_verilator/sim_main.cpp ./src_verilator/sim_uart.h
-# obj_dir/vgasim.o: ./src_verilator/vgasim.cpp ./src_verilator/vgasim.h ./src_verilator/videomode.h ./src_verilator/image.h
+obj_dir/sim_main.o: ./sim_main.cpp ./testbench.h ./sim_uart.h
+obj_dir/sim_uart.o: ./sim_main.cpp ./sim_uart.h
+# obj_dir/vgasim.o: ./vgasim.cpp ./vgasim.h ./videomode.h ./image.h
 
-obj_dir/%.o: ./src_verilator/%.cpp | obj_dir
+obj_dir/%.o: ./%.cpp | obj_dir
 	$(CXX) $(CFLAGS) $(INCS) -c $< -o $@
 
 run_verilator : sim_main
