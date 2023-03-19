@@ -1,5 +1,8 @@
 #include <stdint.h>
 
+// SYSInit
+void SYSInit(void);
+
 //INTERRUPT DEF
 #define NVIC_CTRL_ADDR (*(volatile unsigned *)0xe000e100)
 
