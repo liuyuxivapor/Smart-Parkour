@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include <math.h>
 
+//缩放图片
 // 双线性插值函数
 int bilinear_interp(unsigned char* src, int src_width, int src_height, unsigned char* dst, int dst_width, int dst_height)
 {
@@ -32,7 +33,6 @@ int bilinear_interp(unsigned char* src, int src_width, int src_height, unsigned 
             dst[offset++] = (unsigned char)pixel;
         }
     }
-
     return 0;
 }
 
