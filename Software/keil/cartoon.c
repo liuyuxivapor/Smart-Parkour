@@ -119,7 +119,7 @@ void cartoon_move_forward(uint16_t speed,struct Cartoon_pictures *picture)
             p_oc_pos = p_oc_pos->next;
         }
         
-    }while(p_oc_pos->next!=NULL)
+    }while(p_oc_pos != NULL)
 }
 //场景（障碍物）向左移动,模拟鸟飞行,输入移动数据
 
@@ -135,7 +135,7 @@ void cartoon_refresh(struct Cartoon_pictures *picture_next)
     {
         cartoon_draw_bar(oc->ocstacle_type, oc->oc_edge_position, oc->ocstacle_height, ocstacle_width );
         oc = oc->next;
-    }while(oc->next!=NULL)
+    }while(oc != NULL)
 }
 /*刷新图片*/
 

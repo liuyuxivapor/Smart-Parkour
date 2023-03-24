@@ -41,9 +41,9 @@ void logic_rise_up(uint16_t speed, struct Logic_player_bird_position *bird_posit
 
 void logic_descend_down(uint16_t speed, struct Logic_player_bird_position *bird_position)
 {
-    if(bird_position->edge_y[3]>speed)
+    if(bird_position->edge_y[3]>=speed)
     {
-        for(uint16_t i=0; i<4 i++)
+        for(uint16_t i=0; i<4; i++)
         {
             bird_position->edge_y[i]=bird_position->edge_y[i]-speed;
             bird_position->clo_edge_y[i]=bird_position->clo_edge_y[i]-speed;
@@ -64,42 +64,43 @@ void logic_descend_down(uint16_t speed, struct Logic_player_bird_position *bird_
 }
 /*以speed像素每秒速度下降*/
 
-uint16_t logic_collide(struct Logic_player_bird_position *bird_position, struct Logic_ocstacle_position *oc_pos,struct Logic_game_event *logic)
+uint16_t logic_collide(struct Logic_player_bird_position *birdpos, struct Logic_ocstacle_position *ocpos)
 {
-    struct Logic_player_bird_position bird = *bird_position;
-    struct Logic_ocstacle_position ocs = *oc_pos;
-    for(uint16_t i=0; i<=1; i++)
+    struct Logic_ocstacle_position* cur = ocpos;
+    while (cur->oc_edge_position <= birdpos->clo_edge_x[1] && cur != NULL)
     {
-        if(bird.edge_x[1]<ocs.oc_edge_position || bird.edge_x[0]>(ocs.oc_edge_position+ocs.ocstacle_width))
+        if (birdpos->clo_edge_x - cur->oc_edge_position > ocstacle_width)
         {
-            return 0;
+            cur = cur->next;
         }
         else
         {
-            if(ocs.ocstacle_type==0)
+            if (cur->ocstacle_type == 0)
             {
-                if(bird.edge_y[3]>ocs.ocstacle_height)
+                if (birdpos->edge_y[3] > cur->ocstacle_height)
                 {
                     return 0;
                 }
-                else if(bird.edge_y[3]<=ocs.ocstacle_height)
+                else if (birdpos->edge_y[3] <= cur->ocstacle_height)
                 {
                     return 1;
                 }
             }
-            else if(ocs.ocstacle_type==1)//上方的障碍物
+            else if (cur->ocstacle_type == 1)//上方的障碍物
             {
-                if(bird.edge_y[0]<ocs.ocstacle_height)
+                if (birdpos->edge_y[0] < cur->ocstacle_height)
                 {
                     return 0;
                 }
-                else if(bird.edge_y[0]>=ocs.ocstacle_height)
+                else if (birdpos->edge_y[0] >= cur->ocstacle_height)
                 {
                     return 1;
                 }
             }
+            cur = cur->next;
         }
     }
+    return 0;
 }
 /*判断是否碰撞，碰撞返回1，未碰撞返回0*/
 

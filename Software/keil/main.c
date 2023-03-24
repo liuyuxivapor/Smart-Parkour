@@ -1,10 +1,11 @@
 #include <stdint.h>
 #include <stdio.h>
 #include "cartoon.h"
+#include "UI.h"
 
 
 extern uint32_t key0_flag, key1_flag, key2_flag, key3_flag;
-/*key0ÉÏÉý key1ÏÂ½µ key2Ïò×ó key3ÏòÓÒ*/
+/*key0ï¿½ï¿½ï¿½ï¿½ key1ï¿½Â½ï¿½ key2ï¿½ï¿½ï¿½ï¿½ key3ï¿½ï¿½ï¿½ï¿½*/
 
 int main(void)
 {
@@ -15,42 +16,112 @@ int main(void)
 	LCD_Init(1);
 	struct Cartoon_pictures main_picture;
 	struct Logic_game_event main_game_event;
-	main_game_event.Collide_return = 0;
-	main_game_event.Pause = 1;
-	main_game_event.End = 1;
-	main_game_event.Score = 0;
-	main_picture.bird_position.edge_x[0] = 300;
-	main_picture.bird_position.edge_x[1] = 300 + bird_vis_width;
-	main_picture.bird_position.edge_x[2] = 300 + bird_vis_width;
-	main_picture.bird_position.edge_x[3] = 300;
-	main_picture.bird_position.edge_y[0] = 240;
-	main_picture.bird_position.edge_y[1] = 240;
-	main_picture.bird_position.edge_y[2] = 240 - bird_vis_height;
-	main_picture.bird_position.edge_y[3] = 240 - bird_vis_height;
-	main_picture.bird_position.clo_edge_x[0] = 305;
-	main_picture.bird_position.clo_edge_x[1] = 305 + bird_clo_width;
-	main_picture.bird_position.clo_edge_x[2] = 305 + bird_clo_width;
-	main_picture.bird_position.clo_edge_x[3] = 305;
-	main_picture.bird_position.clo_edge_y[0] = 235;
-	main_picture.bird_position.clo_edge_y[1] = 235;
-	main_picture.bird_position.clo_edge_y[2] = 235 - bird_clo_height;
-	main_picture.bird_position.clo_edge_y[3] = 235 - bird_clo_height;
-	main_picture.head->next = NULL;
-	uint16_t seed = 1;//Ëæ»úÉú³ÉÊýµÄÖÖ×Ó
-	//cartoon_bird_init(main_picture.bird_view);
-	//³õÊ¼»¯bird,µØÍ¼ºÍÊÂ¼þÁÐ±í
-	while (main_game_event.End)
+	while (1)
 	{
-		while (main_game_event.Pause)
+		int start = 1;
+		while (start)
 		{
-			uint16_t oc_id = 0;
-			main_picture.head->oc_edge_position = logic_random_num(1200, 1000, &seed);
+			start = ui_welcome(key0_flag);
+		}
+		main_game_event.Collide_return = 0;
+		main_game_event.Pause = 1;
+		main_game_event.End = 1;
+		main_game_event.Score = 0;
+		main_picture.bird_position.edge_x[0] = 300;
+		main_picture.bird_position.edge_x[1] = 300 + bird_vis_width;
+		main_picture.bird_position.edge_x[2] = 300 + bird_vis_width;
+		main_picture.bird_position.edge_x[3] = 300;
+		main_picture.bird_position.edge_y[0] = 240;
+		main_picture.bird_position.edge_y[1] = 240;
+		main_picture.bird_position.edge_y[2] = 240 - bird_vis_height;
+		main_picture.bird_position.edge_y[3] = 240 - bird_vis_height;
+		main_picture.bird_position.clo_edge_x[0] = 305;
+		main_picture.bird_position.clo_edge_x[1] = 305 + bird_clo_width;
+		main_picture.bird_position.clo_edge_x[2] = 305 + bird_clo_width;
+		main_picture.bird_position.clo_edge_x[3] = 305;
+		main_picture.bird_position.clo_edge_y[0] = 235;
+		main_picture.bird_position.clo_edge_y[1] = 235;
+		main_picture.bird_position.clo_edge_y[2] = 235 - bird_clo_height;
+		main_picture.bird_position.clo_edge_y[3] = 235 - bird_clo_height;
+		uint16_t seed = 1;//éšæœºæ•°ç§å­
+		uint16_t oc_id = 0;
+		main_picture.head = (struct Logic_ocstacle_position*)malloc(sizeof(struct Logic_ocstacle_position));
+		struct Logic_ocstacle_position* cur = main_picture.head;
+		cur->ocstacle_id = oc_id;
+		cur->oc_edge_position = logic_random_num(1100, 1000, &seed);
+		cur->ocstacle_type = cur->oc_edge_position % 2;
+		cur->ocstacle_height = logic_random_num(380, 100, &seed);
+		cur->next = NULL;
+		//åˆå§‹åŒ–
+		//cartoon_bird_init(main_picture.bird_view);
+		while (main_game_event.End)
+		{
+			while (main_game_event.Pause)
+			{
+				if (cur->oc_edge_position <= 900)//ç”Ÿæˆä¸€ä¸ªæ–°çš„éšœç¢ç‰©
+				{
+					cur->next = (struct Logic_ocstacle_position*)malloc(sizeof(struct Logic_ocstacle_position));
+					cur = cur->next;
+					cur->next = NULL;
+					oc_id++;
+					cur->ocstacle_id = oc_id;
+					cur->oc_edge_position = logic_random_num(1100, 1000, &seed);
+					cur->ocstacle_type = cur->oc_edge_position % 2;
+					cur->ocstacle_height = logic_random_num(380, 100, &seed);
+				}
+				if (key0_flag == 1 && key1_flag == 0)//å‘ä¸Šç§»åŠ¨
+				{
+					logic_rise_up(10, &main_picture.bird_position);
+				}
+				else if (key0_flag == 0 && key1_flag == 1)//å‘ä¸‹ç§»åŠ¨
+				{
+					logic_descend_down(10, &main_picture.bird_position);
+				}
+				cartoon_move_forward(20, &main_picture);//åœºæ™¯ç§»åŠ¨
+				if (main_picture.head->oc_edge_position < 110)//é‡Šæ”¾å·²ç»è¶…å‡ºå·¦ä¾§ç»˜åˆ¶èŒƒå›´çš„éšœç¢ç‰©
+				{
+					main_game_event.Score=main_picture.head->ocstacle_id;
+					struct Logic_ocstacle_position* rand = main_picture.head;
+					main_picture.head = main_picture.head->next;
+					free(rand);
+				}
+				cartoon_refresh(&main_picture);//æ˜¾ç¤ºåˆšæ‰ç”Ÿæˆçš„ç”»é¢
+				if (logic_collide(&main_picture.bird_position, &main_picture.head))
+				{
+					main_game_event.End = 0;
+				}
+				delay(825000);//å»¶è¿Ÿ33æ¯«ç§’
+				if (key0_flag == 1)//KEY0æŒ‰ä¸‹æ—¶æš‚åœ
+				{
+					main_game_event.Pause = 0;
+				}
+			}
+			int ran_event = ui_pause(key0_flag, key1_flag);
+			if (ran_event)
+			{
+				main_game_event.Pause = 1;
+			}
+			else
+			{
+				main_game_event.End = 0;
+			}
+		}
+		int ran_event = ui_end(key0_flag, main_game_event.Score);
+		if (ran_event)
+		{
+			while (main_picture.head != NULL)
+			{
+				main_picture.head = main_picture.head->next;
+				free(main_picture.head);
+			}
+			continue;
+		}
+		else
+		{
+			delay(2500000);
+			break;
 		}
 	}
-
-
-
-
 	return 0;
 
 }

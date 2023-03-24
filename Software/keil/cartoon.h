@@ -18,7 +18,7 @@ struct Cartoon_pictures
 {
     uint16_t bird_view[BIRD_VIEW_Y][BIRD_VIEW_X];
     struct Logic_player_bird_position bird_position;
-    struct Logic_ocstacle_position *head;
+    struct Logic_ocstacle_position *head;   
 };
 
 uint16_t Cartoon_bird_shift[2];
@@ -46,7 +46,7 @@ void cartoon_move_forward(uint16_t speed,struct Cartoon_pictures *picture);
 //uint16_t cartoon_fly_left(void);
 ////玩家控制鸟向左飞行,向左飞行匀速
 
-void cartoon_refresh(struct Cartoon_pictures picture_next);
+void cartoon_refresh(struct Cartoon_pictures *picture_next);
 //刷新显示下一张图片
 
 #endif
