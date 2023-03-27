@@ -10,18 +10,34 @@ void SYSInit(void)
 
 	// Systick initial
 	Set_SysTick_CTRL(0);
-
-	// CAMERA initial
-	CAMERA_Init();
 }
 
-void delay(uint32_t time)
+void delay_us(int us)
 {
-	Set_SysTick_CTRL(0);
-	Set_SysTick_LOAD(time);
-	Set_SysTick_VALUE(0);
-	Set_SysTick_CTRL(0x7);
-	__wfi();
+	uint32_t temp;
+	SysTick->LOAD  = us*25;
+	SysTick->VALUE = 0x00;
+	SysTick->CTRL  = 0x05; 
+	do
+	{
+		temp = SysTick->CTRL;
+	}while((temp&0x01)&&!(temp&(1<<16)));
+	SysTick->CTRL  = 0x00;
+	SysTick->VALUE = 0x00;
+}
+
+void delay_ms(int ms)
+{
+	uint32_t temp;
+	SysTick->LOAD  = ms*25000;
+	SysTick->VALUE = 0x00; 
+	SysTick->CTRL  = 0x05;
+	do
+	{
+		temp = SysTick->CTRL;
+	}while((temp&0x01)&&!(temp&(1<<16)));
+	SysTick->CTRL  = 0x00; 
+	SysTick->VALUE = 0x00;
 }
 
 char ReadUARTState()

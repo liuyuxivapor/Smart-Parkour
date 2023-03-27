@@ -27,10 +27,10 @@ uint16_t Cartoon_bird_shift[2];
 void cartoon_debug_bird_range(struct Logic_player_bird_position player_bird);
 //仅调试时使用，用方框标出鸟的图像范围和碰撞范围
 
-void cartoon_bird_init(uint16_t* bird_view[BIRD_VIEW_Y][BIRD_VIEW_X]);
+void cartoon_bird_init(uint16_t* bird_view);
 //初始化鸟
 
-uint16_t cartoon_draw_bird(uint16_t* p_bird_view[BIRD_VIEW_Y][BIRD_VIEW_X], uint16_t start_point[2]);
+uint16_t cartoon_draw_bird(uint16_t bird_view[BIRD_VIEW_Y][BIRD_VIEW_X], uint16_t start_point[2]);
 //画鸟,成功返回1，否则返回0，起始点为绘制范围的左上角
 
 uint16_t cartoon_draw_bar(uint16_t type, uint16_t start_point, uint16_t height, uint16_t width);

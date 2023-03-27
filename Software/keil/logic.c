@@ -69,7 +69,7 @@ uint16_t logic_collide(struct Logic_player_bird_position *birdpos, struct Logic_
     struct Logic_ocstacle_position* cur = ocpos;
     while (cur->oc_edge_position <= birdpos->clo_edge_x[1] && cur != NULL)
     {
-        if (birdpos->clo_edge_x - cur->oc_edge_position > ocstacle_width)
+        if (birdpos->clo_edge_x[0] - cur->oc_edge_position > ocstacle_width)
         {
             cur = cur->next;
         }

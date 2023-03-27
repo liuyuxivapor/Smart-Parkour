@@ -1,5 +1,6 @@
 #include <stdint.h>
 #include <stdio.h>
+#include <stdlib.h>
 #include "cartoon.h"
 #include "UI.h"
 
@@ -43,7 +44,7 @@ int main(void)
 		main_picture.bird_position.clo_edge_y[1] = 235;
 		main_picture.bird_position.clo_edge_y[2] = 235 - bird_clo_height;
 		main_picture.bird_position.clo_edge_y[3] = 235 - bird_clo_height;
-		uint16_t seed = 1;//随机数种子
+		uint64_t seed = 1;//随机数种子
 		uint16_t oc_id = 0;
 		main_picture.head = (struct Logic_ocstacle_position*)malloc(sizeof(struct Logic_ocstacle_position));
 		struct Logic_ocstacle_position* cur = main_picture.head;
@@ -86,7 +87,7 @@ int main(void)
 					free(rand);
 				}
 				cartoon_refresh(&main_picture);//显示刚才生成的画面
-				if (logic_collide(&main_picture.bird_position, &main_picture.head))
+				if (logic_collide(&main_picture.bird_position, main_picture.head))
 				{
 					main_game_event.End = 0;
 				}
@@ -106,7 +107,7 @@ int main(void)
 				main_game_event.End = 0;
 			}
 		}
-		int ran_event = ui_end(key0_flag, main_game_event.Score);
+		int ran_event = ui_end(key0_flag, key1_flag, main_game_event.Score);
 		if (ran_event)
 		{
 			while (main_picture.head != NULL)

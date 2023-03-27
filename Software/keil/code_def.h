@@ -1,35 +1,10 @@
-#ifndef _CODE_DEF_H
-#define _CODE_DEF_H
-
 #include <stdint.h>
-#include <stdbool.h>
+
+// SYSInit
+void SYSInit(void);
 
 //INTERRUPT DEF
 #define NVIC_CTRL_ADDR (*(volatile unsigned *)0xe000e100)
-
-//CAMERA DEF
-typedef struct{
-    volatile uint16_t CAMERA_VALUE[240][320];
-}CAMERAType;
-
-#define CAMERA_BASE 0x40300000
-#define CAMERA ((CAMERAType *)CAMERA_BASE)
-
-//CAMERA CONFIG DEF
-typedef struct{
-    volatile uint32_t CAMERA_CONFIG_RST;
-    volatile uint32_t CAMERA_CONFIG_PWDN;
-    volatile uint32_t CAMERA_CONFIG_SCL;
-    volatile uint32_t CAMERA_CONFIG_SDAO;
-    volatile uint32_t CAMERA_CONFIG_SDAI;
-    volatile uint32_t CAMERA_CONFIG_SDAOEN;
-    volatile uint32_t CAMERA_DATA_STATE;
-    volatile uint32_t CAMERA_DATA_LEN;
-}CAMERA_CONFIGType;
-
-#define CAMERA_CONFIG_BASE 0x40330000
-#define CAMERA_CONFIG ((CAMERA_CONFIGType *)CAMERA_CONFIG_BASE)
-
 
 //LCD DEF
 typedef struct {
@@ -73,8 +48,6 @@ void WriteUART(char data);
 void UARTString(char *stri);
 void UARTHandle(void);
 
-
-
 //SCB DEF
 typedef struct
 {
@@ -115,47 +88,14 @@ uint32_t Timer_Ini(void);
 uint8_t Timer_Stop(uint32_t *duration_t,uint32_t start_t);
 
 // DELAY FUNC
-void delay(uint32_t time);
+void delay_us(int time);
+void delay_ms(int time);
 
 // INTERUPT
-// void KEY0(void);
-// void KEY1(void);
-// void KEY2(void);
-// void KEY3(void);
-
-// CAMERA
-void Set_CAMERA_SDA_W(void);
-void Set_CAMERA_SDA_R(void);
-void Set_CAMERA_SCL(void);
-void Clr_CAMERA_SCL(void);
-void Set_CAMERA_RST(void);
-void Clr_CAMERA_RST(void);
-void Set_CAMERA_PWDN(void);
-void Clr_CAMERA_PWDN(void);
-void Set_CAMERA_SDA(void);
-uint32_t Read_CAMERA_SDA(void);
-void Clr_CAMERA_SDA(void);
-void CAMERA_Start(void);
-void CAMERA_Stop(void);
-void CAMERA_Waite(void);
-void CAMERA_Write_Byte(uint8_t data);
-void CAMERA_Command(uint8_t addr_h,uint8_t addr_l,uint8_t data);
-void CAMERA_Data(uint8_t data);
-void CAMERA_Init(void);
-uint32_t Read_CAMERA_DATA_STATE(void);
-void Set_CAMERA_DATA_STATE(uint32_t state);
-uint32_t Read_CAMERA_DATA_LEN(void);
-uint8_t CAMERA_Read_Byte(void);
-uint8_t CAMERA_Read_Reg(uint16_t reg);
-uint8_t CAMERA_Focus_Init(void);
-void CAMERA_Light_Mode(void);	
-void CAMERA_Color_Saturation(void);
-void CAMERA_Brightness(void);	
-void CAMERA_Contrast(void);	
-void CAMERA_Sharpness(void);	
-uint8_t CAMERA_Focus_Constant(void);
-void CAMERA_NA(void);
-void photo(void);
+void KEY0(void);
+void KEY1(void);
+void KEY2(void);
+void KEY3(void);
 
 //  LCD 
 typedef struct  
@@ -267,22 +207,22 @@ extern uint16_t  BACK_COLOR;
 #define SSD_VT 	(SSD_VER_RESOLUTION+SSD_VER_BACK_PORCH+SSD_VER_FRONT_PORCH)
 #define SSD_VPS (SSD_VER_BACK_PORCH)  	
 
-void LCD_Init(uint8_t dir);//初始化									
-void LCD_DisplayOn(void);//开启显示													
-void LCD_DisplayOff(void);//关闭显示器													
-void LCD_Clear(uint16_t Color);//清除	 											
+void LCD_Init(uint8_t dir);									
+void LCD_DisplayOn(void);													
+void LCD_DisplayOff(void);													
+void LCD_Clear(uint16_t Color);	 											
 void LCD_SetCursor(uint16_t Xpos, uint16_t Ypos);							
 void LCD_DrawPoint(uint16_t x,uint16_t y);									
 void LCD_Fast_DrawPoint(uint16_t x,uint16_t y,uint16_t color);							
-// uint16_t  LCD_ReadPoint(uint16_t x,uint16_t y); 										
+uint16_t  LCD_ReadPoint(uint16_t x,uint16_t y); 										
 void LCD_Draw_Circle(uint16_t x0,uint16_t y0,uint8_t r);						 		
 void LCD_DrawLine(uint16_t x1, uint16_t y1, uint16_t x2, uint16_t y2);					
 void LCD_DrawRectangle(uint16_t x1, uint16_t y1, uint16_t x2, uint16_t y2);		   		
 void LCD_Fill(uint16_t sx,uint16_t sy,uint16_t ex,uint16_t ey,uint16_t color);		   	
-void LCD_Color_Fill(uint16_t sx,uint16_t sy,uint16_t ex,uint16_t ey,uint16_t *color);//填充渐变色	
-void LCD_ShowChar(uint16_t x,uint16_t y,uint8_t num,uint8_t size,uint8_t mode);//mode置1			
+void LCD_Color_Fill(uint16_t sx,uint16_t sy,uint16_t ex,uint16_t ey,uint16_t *color);	
+void LCD_ShowChar(uint16_t x,uint16_t y,uint8_t num,uint8_t size,uint8_t mode);			
 void LCD_ShowNum(uint16_t x,uint16_t y,uint32_t num,uint8_t len,uint8_t size);  					
-void LCD_ShowxNum(uint16_t x,uint16_t y,uint32_t num,uint8_t len,uint8_t size,uint8_t mode);			//??	
+void LCD_ShowxNum(uint16_t x,uint16_t y,uint32_t num,uint8_t len,uint8_t size,uint8_t mode);				
 void LCD_ShowString(uint16_t x,uint16_t y,uint16_t width,uint16_t height,uint8_t size,uint8_t *p);		
 
 void LCD_WriteReg(uint16_t LCD_Reg, uint16_t LCD_RegValue);
@@ -291,25 +231,21 @@ void LCD_WriteRAM_Prepare(void);
 void LCD_WriteRAM(uint16_t RGB_Code);
 void LCD_SSD_BackLightSet(uint8_t pwm);							
 void LCD_Scan_Dir(uint8_t dir);									
-void LCD_Display_Dir(uint8_t dir);//设置显示方向
+void LCD_Display_Dir(uint8_t dir);
 void LCD_Set_Window(uint16_t sx,uint16_t sy,uint16_t width,uint16_t height);
 
 //Buzzer DEF
-typedef struct
-{
-    volatile uint32_t BuzzerBGMAddr;
-    volatile uint32_t BuzzerBGMCtr;
-    volatile uint32_t BuzzerSoundAddr;
-    volatile uint32_t BuzzerSoundCtr;
-}BuzzerStr;
+typedef struct{
+    volatile uint32_t EN;
+}BuzzerType;
 
-#define Buzzer_BASE 0x40100000
-#define Buzzer ((BuzzerStr *)Buzzer_BASE)
+#define Buzzer_BASE 0x40060000
+#define Buzzer ((BuzzerType *)Buzzer_BASE)
 
-void Play_BGM(char* BeginAddr, bool isCyl);
-void Stop_BGM(void);
-void Start_BGM(void);
-void Reset_BGM(void);
-void Play_Sound(char* BeginAddr,uint32_t Pri);
+//LED DEF
+typedef struct{
+    volatile uint32_t LED_MODE;
+}LEDType;
 
-#endif
+#define LED_BASE 0x40040000
+#define LED ((LEDType *)LED_BASE)

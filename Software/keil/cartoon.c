@@ -1,6 +1,6 @@
 #include "cartoon.h"
 
-void cartoon_bird_init(uint16_t *bird_view[BIRD_VIEW_Y][BIRD_VIEW_X])
+void cartoon_bird_init(uint16_t *bird_view)
 {
     for(uint16_t i=0; i<BIRD_VIEW_Y; i++)
     {
@@ -13,20 +13,19 @@ void cartoon_bird_init(uint16_t *bird_view[BIRD_VIEW_Y][BIRD_VIEW_X])
 }
 //鸟图像的初始化
 
-uint16_t cartoon_draw_bird(uint16_t *p_bird_view[BIRD_VIEW_Y][BIRD_VIEW_X],uint16_t start_point[2])
+uint16_t cartoon_draw_bird(uint16_t bird_view[BIRD_VIEW_Y][BIRD_VIEW_X],uint16_t start_point[2])
 {
-    uint16_t *bird_view=p_bird_view;
     for(uint16_t i=0; i<BIRD_VIEW_Y; i++)
     {
         for(uint16_t j=0; j<BIRD_VIEW_X; j++)
         {
-            if(*(bird_view+(i+1)*j)>13)
+            if(bird_view[i][j]>13)
             {
                 return 0;
             }
             else
             {
-                switch (*(bird_view+(i+1)*j))
+                switch (bird_view[i][j])
                 {
                     //case 0:LCD_Fast_DrawPoint(start_point[0]+j,start_point[1]-i,WHITE);
                         //break;
@@ -97,7 +96,7 @@ uint16_t cartoon_draw_bar(uint16_t type, uint16_t start_point, uint16_t height, 
         return 0;
     }
 
-    LCD_Color_Fill(start_point_x - 200, start_point_y, end_point_x - 200, end_point_y, &(GREEN));
+    LCD_Color_Fill(start_point_x - 200, start_point_y, end_point_x - 200, end_point_y, (uint16_t*)GREEN);
     return 1;
 }
 /*绘制一个普通条，type规定类型（1为上方，0为下方）,start_point规定起始点（最左端最边缘处）,
@@ -119,7 +118,7 @@ void cartoon_move_forward(uint16_t speed,struct Cartoon_pictures *picture)
             p_oc_pos = p_oc_pos->next;
         }
         
-    }while(p_oc_pos != NULL)
+    }while(p_oc_pos != NULL);
 }
 //场景（障碍物）向左移动,模拟鸟飞行,输入移动数据
 
@@ -127,15 +126,15 @@ void cartoon_refresh(struct Cartoon_pictures *picture_next)
 {
     LCD_Clear(WHITE);
     uint16_t bird_pos_xy[2];
-    bird_pos_xy[0] = picture_next->bird_positin.edge_x[0];
-    bird_pos_xy[1] = picture_next->bird_positin.edge_y[0];
-    cartoon_draw_bird(&(picture_next->bird_view), bird_pos_xy);
+    bird_pos_xy[0] = picture_next->bird_position.edge_x[0];
+    bird_pos_xy[1] = picture_next->bird_position.edge_y[0];
+    cartoon_draw_bird(picture_next->bird_view, bird_pos_xy);
     struct Logic_ocstacle_position* oc = picture_next->head;
     do
     {
         cartoon_draw_bar(oc->ocstacle_type, oc->oc_edge_position, oc->ocstacle_height, ocstacle_width );
         oc = oc->next;
-    }while(oc != NULL)
+    }while(oc != NULL);
 }
 /*刷新图片*/
 
@@ -145,8 +144,8 @@ void cartoon_debug_bird_range(struct Logic_player_bird_position player_bird)
     LCD_DrawLine(player_bird.clo_edge_x[1], player_bird.clo_edge_y[1], player_bird.clo_edge_x[2], player_bird.clo_edge_y[2]);
     LCD_DrawLine(player_bird.clo_edge_x[2], player_bird.clo_edge_y[2], player_bird.clo_edge_x[3], player_bird.clo_edge_y[3]);
     LCD_DrawLine(player_bird.clo_edge_x[3], player_bird.clo_edge_y[3], player_bird.clo_edge_x[0], player_bird.clo_edge_y[0]);
-    LCD_Drawline(player_bird.edge_x[0], player_bird.edge_y[0], player_bird.edge_x[1], player_bird.edge_y[1]);
-    LCD_Drawline(player_bird.edge_x[1], player_bird.edge_y[1], player_bird.edge_x[2], player_bird.edge_y[2]);
-    LCD_Drawline(player_bird.edge_x[2], player_bird.edge_y[2], player_bird.edge_x[3], player_bird.edge_y[3]);
-    LCD_Drawline(player_bird.edge_x[3], player_bird.edge_y[3], player_bird.edge_x[0], player_bird.edge_y[0]);
+    LCD_DrawLine(player_bird.edge_x[0], player_bird.edge_y[0], player_bird.edge_x[1], player_bird.edge_y[1]);
+    LCD_DrawLine(player_bird.edge_x[1], player_bird.edge_y[1], player_bird.edge_x[2], player_bird.edge_y[2]);
+    LCD_DrawLine(player_bird.edge_x[2], player_bird.edge_y[2], player_bird.edge_x[3], player_bird.edge_y[3]);
+    LCD_DrawLine(player_bird.edge_x[3], player_bird.edge_y[3], player_bird.edge_x[0], player_bird.edge_y[0]);
 }
