@@ -2,11 +2,11 @@
  * @Author: Xuejian Sun 
  * @Date: 2023-02-23 10:58:51 
  * @Last Modified by: Xuejian Sun
- * @Last Modified time: 2023-02-27 20:31:38
+ * @Last Modified time: 2023-03-27 16:45:09
  */
 
 module Cortex_M0_Soc (
-  input wire clk,
+  input wire clk,                   // 50MHz
   input wire RSTn,
   inout wire SWDIO,
   input wire SWCLK,
@@ -37,10 +37,13 @@ module Cortex_M0_Soc (
 
   // KEYBOARD
   input  [3:0] col,
-  output [3:0] row
+  output [3:0] row,
 
   // LED
-  // output wire [7:0] LED
+  output wire [7:0] LED,
+
+  // Buzzer
+  output wire beep
 );
 
   // --------------------
@@ -60,7 +63,6 @@ module Cortex_M0_Soc (
   wire interrupt_UART;
   wire [3:0] key_interrupt;
 
-  /*Connect the IRQ with UART*/
   assign IRQ = {27'b0, key_interrupt[3:0], interrupt_UART};
 
   // Keyboard
@@ -74,8 +76,6 @@ module Cortex_M0_Soc (
 
   wire RXEV;
   assign RXEV = 1'b0;
-
-  
 
   // --------------------
   // AHB wires
@@ -254,6 +254,34 @@ module Cortex_M0_Soc (
   wire    [31:0]  HRDATA_P4;
   wire            HRESP_P4;
 
+  wire            HSEL_P5;
+  wire    [31:0]  HADDR_P5;
+  wire    [2:0]   HBURST_P5;
+  wire            HMASTLOCK_P5;
+  wire    [3:0]   HPROT_P5;
+  wire    [2:0]   HSIZE_P5;
+  wire    [1:0]   HTRANS_P5;
+  wire    [31:0]  HWDATA_P5;
+  wire            HWRITE_P5;
+  wire            HREADY_P5;
+  wire            HREADYOUT_P5;
+  wire    [31:0]  HRDATA_P5;
+  wire            HRESP_P5;
+
+  wire            HSEL_P6;
+  wire    [31:0]  HADDR_P6;
+  wire    [2:0]   HBURST_P6;
+  wire            HMASTLOCK_P6;
+  wire    [3:0]   HPROT_P6;
+  wire    [2:0]   HSIZE_P6;
+  wire    [1:0]   HTRANS_P6;
+  wire    [31:0]  HWDATA_P6;
+  wire            HWRITE_P6;
+  wire            HREADY_P6;
+  wire            HREADYOUT_P6;
+  wire    [31:0]  HRDATA_P6;
+  wire            HRESP_P6;
+
   AHBlite_Interconnect Interconncet(
     .HCLK           (clk),
     .HRESETn        (cpuresetn),
@@ -344,7 +372,37 @@ module Cortex_M0_Soc (
     .HREADY_P4      (HREADY_P4),
     .HREADYOUT_P4   (HREADYOUT_P4),
     .HRDATA_P4      (HRDATA_P4),
-    .HRESP_P4       (HRESP_P4)
+    .HRESP_P4       (HRESP_P4),
+
+    // P5
+    .HSEL_P5        (HSEL_P5),
+    .HADDR_P5       (HADDR_P5),
+    .HBURST_P5      (HBURST_P5),
+    .HMASTLOCK_P5   (HMASTLOCK_P5),
+    .HPROT_P5       (HPROT_P5),
+    .HSIZE_P5       (HSIZE_P5),
+    .HTRANS_P5      (HTRANS_P5),
+    .HWDATA_P5      (HWDATA_P5),
+    .HWRITE_P5      (HWRITE_P5),
+    .HREADY_P5      (HREADY_P5),
+    .HREADYOUT_P5   (HREADYOUT_P5),
+    .HRDATA_P5      (HRDATA_P5),
+    .HRESP_P5       (HRESP_P5),
+
+    // P6
+    .HSEL_P6        (HSEL_P6),
+    .HADDR_P6       (HADDR_P6),
+    .HBURST_P6      (HBURST_P6),
+    .HMASTLOCK_P6   (HMASTLOCK_P6),
+    .HPROT_P6       (HPROT_P6),
+    .HSIZE_P6       (HSIZE_P6),
+    .HTRANS_P6      (HTRANS_P6),
+    .HWDATA_P6      (HWDATA_P6),
+    .HWRITE_P6      (HWRITE_P6),
+    .HREADY_P6      (HREADY_P6),
+    .HREADYOUT_P6   (HREADYOUT_P6),
+    .HRDATA_P6      (HRDATA_P6),
+    .HRESP_P6       (HRESP_P6)
   );
 
   // --------------------
@@ -417,6 +475,28 @@ module Cortex_M0_Soc (
   );
 
   // --------------------
+  // AHB LED
+  // --------------------
+
+  AHBlite_LED LED_Interface(
+    /* Connect to Interconnect Port 5 */
+    .HCLK                   (clk),
+    .HRESETn                (cpuresetn),
+    .HSEL                   (HSEL_P5),
+    .HADDR                  (HADDR_P5),
+    .HPROT                  (HPROT_P5),
+    .HSIZE                  (HSIZE_P5),
+    .HTRANS                 (HTRANS_P5),
+    .HWDATA                 (HWDATA_P5),
+    .HWRITE                 (HWRITE_P5),
+    .HRDATA                 (HRDATA_P5),
+    .HREADY                 (HREADY_P5),
+    .HREADYOUT              (HREADYOUT_P5),
+    .HRESP                  (HRESP_P5),
+    .LED					          (LED)
+  );
+
+  // --------------------
   // AHB LCD
   // --------------------
 
@@ -474,6 +554,29 @@ module Cortex_M0_Soc (
     .BRAM_WDATA     (RAMDATA_WDATA),
     .BRAM_RDATA     (RAMDATA_RDATA),
     .BRAM_WRITE     (RAMDATA_WRITE)
+  );
+
+  // --------------------
+  // AHB Buzzer
+  // --------------------
+
+  AHBlite_Buzzer Buzzer_Interface(
+    /* Connect to Interconnect Port 6 */
+    .HCLK           (clk),
+    .HRESETn        (cpuresetn),
+    .HSEL           (HSEL_P6),
+    .HADDR          (HADDR_P6),
+    .HPROT          (HPROT_P6),
+    .HSIZE          (HSIZE_P6),
+    .HTRANS         (HTRANS_P6),
+    .HWDATA         (HWDATA_P6),
+    .HWRITE         (HWRITE_P6),
+    .HRDATA         (HRDATA_P6),
+    .HREADY         (HREADY_P6),
+    .HREADYOUT      (HREADYOUT_P6),
+    .HRESP          (HRESP_P6),
+    // .System_clk		(System_clk),
+    .beep			(beep)		
   );
 
   // --------------------

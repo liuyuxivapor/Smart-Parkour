@@ -2,10 +2,10 @@
  * @Author: Xuejian Sun 
  * @Date: 2023-02-23 13:16:55 
  * @Last Modified by: Xuejian Sun
- * @Last Modified time: 2023-02-27 18:08:21
+ * @Last Modified time: 2023-03-27 16:31:59
  */
 
-module AHBlite_Decoder
+module AHBlite_Decoder 
 #(
   /*RAMCODE enable parameter*/
   parameter Port0_en = 1,
@@ -24,7 +24,15 @@ module AHBlite_Decoder
   /************************/
 
   /*Camera enable parameter*/
-  parameter Port4_en = 1
+  parameter Port4_en = 1,
+  /************************/
+
+  /*LED enable parameter*/
+  parameter Port5_en = 1,
+  /************************/
+
+  /*Buzzer enable parameter*/
+  parameter Port6_en = 1
   /************************/
 )(
   input [31:0] HADDR,
@@ -42,7 +50,13 @@ module AHBlite_Decoder
   output wire P3_HSEL, 
 
   /*Camera OUTPUT SELECTION SIGNAL*/
-  output wire P4_HSEL
+  output wire P4_HSEL,
+
+  /*LED OUTPUT SELECTION SIGNAL*/
+  output wire P5_HSEL,
+
+  /*BUZZER OUTPUT SELECTION SIGNAL*/
+  output wire P6_HSEL
 );
 
   //RAMCODE-----------------------------------
@@ -71,9 +85,19 @@ module AHBlite_Decoder
   /*Insert UART decoder code there*/
   assign P3_HSEL = (HADDR[31:4] == 28'h4000001) ? Port3_en : 1'd0;
 
-  //0X40300000 Camera
+  //0X4030000 Camera
   /*Insert Camera decoder code there*/
   assign P4_HSEL = (HADDR[31:20] == 12'h403) ? Port4_en : 1'b0;  
+  /***********************************/
+
+  //0X40040000 LED
+  /*Insert LED decoder code there*/
+  assign P5_HSEL = (HADDR[31:16] == 16'h4004) ? Port5_en : 1'b0; 
+  /***********************************/
+
+  //0X40060000 EN
+  /*Insert Buzzer decoder code there*/
+  assign P6_HSEL = (HADDR[31:16] == 16'h4006) ? Port6_en : 1'b0;
   /***********************************/
 
 endmodule

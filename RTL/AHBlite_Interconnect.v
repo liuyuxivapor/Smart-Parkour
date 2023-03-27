@@ -1,8 +1,8 @@
 /*
  * @Author: Xuejian Sun 
  * @Date: 2023-02-23 13:13:19 
- * @Last Modified by:   Xuejian Sun 
- * @Last Modified time: 2023-02-23 13:13:19 
+ * @Last Modified by: Xuejian Sun
+ * @Last Modified time: 2023-03-27 16:54:46
  */
 
 module AHBlite_Interconnect(
@@ -97,7 +97,37 @@ module AHBlite_Interconnect(
   output  wire            HREADY_P4,
   input   wire            HREADYOUT_P4,
   input   wire    [31:0]  HRDATA_P4,
-  input   wire            HRESP_P4
+  input   wire            HRESP_P4,
+
+  // Peripheral 5
+  output  wire            HSEL_P5,
+  output  wire    [31:0]  HADDR_P5,
+  output  wire    [2:0]   HBURST_P5,
+  output  wire            HMASTLOCK_P5,
+  output  wire    [3:0]   HPROT_P5,
+  output  wire    [2:0]   HSIZE_P5,
+  output  wire    [1:0]   HTRANS_P5,
+  output  wire    [31:0]  HWDATA_P5,
+  output  wire            HWRITE_P5,
+  output  wire            HREADY_P5,
+  input   wire            HREADYOUT_P5,
+  input   wire    [31:0]  HRDATA_P5,
+  input   wire            HRESP_P5,
+
+  // Peripheral 6
+  output  wire            HSEL_P6,
+  output  wire    [31:0]  HADDR_P6,
+  output  wire    [2:0]   HBURST_P6,
+  output  wire            HMASTLOCK_P6,
+  output  wire    [3:0]   HPROT_P6,
+  output  wire    [2:0]   HSIZE_P6,
+  output  wire    [1:0]   HTRANS_P6,
+  output  wire    [31:0]  HWDATA_P6,
+  output  wire            HWRITE_P6,
+  output  wire            HREADY_P6,
+  input   wire            HREADYOUT_P6,
+  input   wire    [31:0]  HRDATA_P6,
+  input   wire            HRESP_P6
 
 );
 
@@ -110,6 +140,8 @@ module AHBlite_Interconnect(
   assign  HADDR_P2    =   HADDR;
   assign  HADDR_P3    =   HADDR;
   assign  HADDR_P4    =   HADDR;
+  assign  HADDR_P5    =   HADDR;
+  assign  HADDR_P6    =   HADDR;
 
   // HBURST
   assign  HBURST_P0   =   HBURST;
@@ -117,6 +149,8 @@ module AHBlite_Interconnect(
   assign  HBURST_P2   =   HBURST;
   assign  HBURST_P3   =   HBURST;
   assign  HBURST_P4   =   HBURST;
+  assign  HBURST_P5   =   HBURST;
+  assign  HBURST_P6   =   HBURST;
 
   // HMASTLOCK
   assign HMASTLOCK_P0 =   HMASTLOCK;
@@ -124,6 +158,8 @@ module AHBlite_Interconnect(
   assign HMASTLOCK_P2 =   HMASTLOCK;
   assign HMASTLOCK_P3 =   HMASTLOCK;
   assign HMASTLOCK_P4 =   HMASTLOCK;
+  assign HMASTLOCK_P5 =   HMASTLOCK;
+  assign HMASTLOCK_P6 =   HMASTLOCK;
 
   // HPROT
   assign HPROT_P0     =   HPROT;
@@ -131,6 +167,8 @@ module AHBlite_Interconnect(
   assign HPROT_P2     =   HPROT;
   assign HPROT_P3     =   HPROT;
   assign HPROT_P4     =   HPROT;
+  assign HPROT_P5     =   HPROT;
+  assign HPROT_P6     =   HPROT;
 
   // HSIZE
   assign HSIZE_P0     =   HSIZE;
@@ -138,6 +176,8 @@ module AHBlite_Interconnect(
   assign HSIZE_P2     =   HSIZE;
   assign HSIZE_P3     =   HSIZE;
   assign HSIZE_P4     =   HSIZE;
+  assign HSIZE_P5     =   HSIZE;
+  assign HSIZE_P6     =   HSIZE;
 
   // HTRANS
   assign HTRANS_P0     =   HTRANS;
@@ -145,6 +185,8 @@ module AHBlite_Interconnect(
   assign HTRANS_P2     =   HTRANS;
   assign HTRANS_P3     =   HTRANS;
   assign HTRANS_P4     =   HTRANS;
+  assign HTRANS_P5    =   HTRANS;
+  assign HTRANS_P6    =   HTRANS;
 
   // HWDATA
   assign HWDATA_P0     =   HWDATA;
@@ -152,6 +194,8 @@ module AHBlite_Interconnect(
   assign HWDATA_P2     =   HWDATA;
   assign HWDATA_P3     =   HWDATA;
   assign HWDATA_P4     =   HWDATA;
+  assign HWDATA_P5     =   HWDATA;
+  assign HWDATA_P6     =   HWDATA;
 
   // HWRITE
   assign HWRITE_P0     =   HWRITE;
@@ -159,6 +203,8 @@ module AHBlite_Interconnect(
   assign HWRITE_P2     =   HWRITE;
   assign HWRITE_P3     =   HWRITE;
   assign HWRITE_P4     =   HWRITE;
+  assign HWRITE_P5     =   HWRITE;
+  assign HWRITE_P6     =   HWRITE;
 
   // HREADY
   assign HREADY_P0     =   HREADY;
@@ -166,6 +212,8 @@ module AHBlite_Interconnect(
   assign HREADY_P2     =   HREADY;
   assign HREADY_P3     =   HREADY;
   assign HREADY_P4     =   HREADY;
+  assign HREADY_P5     =   HREADY;
+  assign HREADY_P6     =   HREADY;
 
   // Decoder---------------------------------------
   //-----------------------------------------------
@@ -176,7 +224,9 @@ module AHBlite_Interconnect(
       .P1_HSEL    (HSEL_P1),
       .P2_HSEL    (HSEL_P2),
       .P3_HSEL    (HSEL_P3),
-      .P4_HSEL    (HSEL_P4)   
+      .P4_HSEL    (HSEL_P4),
+      .P5_HSEL    (HSEL_P5),  
+      .P6_HSEL    (HSEL_P6)     
   );
 
   // Slave MUX-------------------------------------
@@ -217,6 +267,18 @@ module AHBlite_Interconnect(
       .P4_HREADYOUT   (HREADYOUT_P4),
       .P4_HRESP       (HRESP_P4),
       .P4_HRDATA      (HRDATA_P4),
+      
+      //P5
+      .P5_HSEL        (HSEL_P5),
+      .P5_HREADYOUT   (HREADYOUT_P5),
+      .P5_HRESP       (HRESP_P5),
+      .P5_HRDATA      (HRDATA_P5),
+
+      //P6
+      .P6_HSEL        (HSEL_P6),
+      .P6_HREADYOUT   (HREADYOUT_P6),
+      .P6_HRESP       (HRESP_P6),
+      .P6_HRDATA      (HRDATA_P6),
 
       .HREADYOUT      (HREADY),
       .HRESP          (HRESP),

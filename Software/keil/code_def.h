@@ -292,3 +292,19 @@ void LCD_SSD_BackLightSet(uint8_t pwm);
 void LCD_Scan_Dir(uint8_t dir);									
 void LCD_Display_Dir(uint8_t dir);
 void LCD_Set_Window(uint16_t sx,uint16_t sy,uint16_t width,uint16_t height);
+
+//Buzzer DEF
+typedef struct{
+    volatile uint32_t EN;
+}BuzzerType;
+
+#define Buzzer_BASE 0x40060000
+#define Buzzer ((BuzzerType *)Buzzer_BASE)
+
+//LED DEF
+typedef struct{
+    volatile uint32_t LED_MODE;
+}LEDType;
+
+#define LED_BASE 0x40040000
+#define LED ((LEDType *)LED_BASE)
