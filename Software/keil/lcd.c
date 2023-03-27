@@ -40,10 +40,10 @@ uint16_t ReadData() {
 void LCD_WR_REG( uint16_t data ) {
   	LCD_RS_CLR; 
  	LCD_CS_CLR; 
-	delay(1);
+	delay_us(1);
 	MakeData( data );
 	LCD_WR_CLR;
-	delay(1);
+	delay_us(1);
 	LCD_WR_SET; 
  	LCD_CS_SET;         
 }
@@ -52,10 +52,10 @@ void LCD_WR_REG( uint16_t data ) {
 void LCD_WR_DATA( uint16_t data ) {
   	LCD_RS_SET;
 	LCD_CS_CLR;
-	delay(1);
+	delay_us(1);
 	MakeData( data );
 	LCD_WR_CLR;
-	delay(1);
+	delay_us(1);
 	LCD_WR_SET;
 	LCD_CS_SET;
 }
@@ -68,7 +68,7 @@ uint16_t LCD_RD_DATA(void)
 	LCD_CS_CLR;
 	LCD_RD_CLR;			   
 	t=ReadData();
-	delay(1);  
+	delay_us(1);  
 	LCD_RD_SET;
 	LCD_CS_SET; 
 
@@ -86,7 +86,7 @@ void LCD_WriteReg( uint16_t LCD_Reg, uint16_t LCD_RegValue ) {
 uint16_t LCD_ReadReg(uint16_t LCD_Reg)
 {										   
  	LCD_WR_REG(LCD_Reg);   
-	delay(50);
+	delay_us(50);
 	return LCD_RD_DATA(); 
 }
 
@@ -100,7 +100,7 @@ void LCD_WriteRAM( uint16_t RGB_Code ) {
     LCD_WR_DATA( RGB_Code );
 }
 
-void opt_delay( uint8_t t ) {
+void opt_delay_us( uint8_t t ) {
     while ( t-- );
 }
 
@@ -323,9 +323,9 @@ void LCD_Set_Window(uint16_t sx,uint16_t sy,uint16_t width,uint16_t height)
 
 void LCD_Init(uint8_t dir)
 { 
-	delay(2500000); // delay 50 ms 
+	delay_us(2500000); // delay_us 50 ms 
 	LCD_WriteReg(0x0000,0x0001);
-	delay(2500000); // delay 50 ms 
+	delay_us(2500000); // delay_us 50 ms 
 	uint16_t idx = LCD_ReadReg(0x0000);
   	lcddev.id = 0x9341;
 	if(lcddev.id==0X9341)	//9341
@@ -420,7 +420,7 @@ void LCD_Init(uint8_t dir)
 		LCD_WR_DATA(0x00);
 		LCD_WR_DATA(0xef);	 
 		LCD_WR_REG(0x11); //Exit Sleep
-		delay(6000000);
+		delay_us(6000000);
 		LCD_WR_REG(0x29); //display on	
 	}
 	LCD_Display_Dir(dir);		 	// horizon or vertical

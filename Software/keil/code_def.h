@@ -6,30 +6,6 @@ void SYSInit(void);
 //INTERRUPT DEF
 #define NVIC_CTRL_ADDR (*(volatile unsigned *)0xe000e100)
 
-//CAMERA DEF
-typedef struct{
-    volatile uint16_t CAMERA_VALUE[240][320];
-}CAMERAType;
-
-#define CAMERA_BASE 0x40300000
-#define CAMERA ((CAMERAType *)CAMERA_BASE)
-
-//CAMERA CONFIG DEF
-typedef struct{
-    volatile uint32_t CAMERA_CONFIG_RST;
-    volatile uint32_t CAMERA_CONFIG_PWDN;
-    volatile uint32_t CAMERA_CONFIG_SCL;
-    volatile uint32_t CAMERA_CONFIG_SDAO;
-    volatile uint32_t CAMERA_CONFIG_SDAI;
-    volatile uint32_t CAMERA_CONFIG_SDAOEN;
-    volatile uint32_t CAMERA_DATA_STATE;
-    volatile uint32_t CAMERA_DATA_LEN;
-}CAMERA_CONFIGType;
-
-#define CAMERA_CONFIG_BASE 0x40330000
-#define CAMERA_CONFIG ((CAMERA_CONFIGType *)CAMERA_CONFIG_BASE)
-
-
 //LCD DEF
 typedef struct {
     volatile uint32_t LCD_CS; // 0x40050000
@@ -72,8 +48,6 @@ void WriteUART(char data);
 void UARTString(char *stri);
 void UARTHandle(void);
 
-
-
 //SCB DEF
 typedef struct
 {
@@ -114,47 +88,14 @@ uint32_t Timer_Ini(void);
 uint8_t Timer_Stop(uint32_t *duration_t,uint32_t start_t);
 
 // DELAY FUNC
-void delay(uint32_t time);
+void delay_us(int time);
+void delay_ms(int time);
 
 // INTERUPT
 void KEY0(void);
 void KEY1(void);
 void KEY2(void);
 void KEY3(void);
-
-// CAMERA
-void Set_CAMERA_SDA_W(void);
-void Set_CAMERA_SDA_R(void);
-void Set_CAMERA_SCL(void);
-void Clr_CAMERA_SCL(void);
-void Set_CAMERA_RST(void);
-void Clr_CAMERA_RST(void);
-void Set_CAMERA_PWDN(void);
-void Clr_CAMERA_PWDN(void);
-void Set_CAMERA_SDA(void);
-uint32_t Read_CAMERA_SDA(void);
-void Clr_CAMERA_SDA(void);
-void CAMERA_Start(void);
-void CAMERA_Stop(void);
-void CAMERA_Waite(void);
-void CAMERA_Write_Byte(uint8_t data);
-void CAMERA_Command(uint8_t addr_h,uint8_t addr_l,uint8_t data);
-void CAMERA_Data(uint8_t data);
-void CAMERA_Init(void);
-uint32_t Read_CAMERA_DATA_STATE(void);
-void Set_CAMERA_DATA_STATE(uint32_t state);
-uint32_t Read_CAMERA_DATA_LEN(void);
-uint8_t CAMERA_Read_Byte(void);
-uint8_t CAMERA_Read_Reg(uint16_t reg);
-uint8_t CAMERA_Focus_Init(void);
-void CAMERA_Light_Mode(void);	
-void CAMERA_Color_Saturation(void);
-void CAMERA_Brightness(void);	
-void CAMERA_Contrast(void);	
-void CAMERA_Sharpness(void);	
-uint8_t CAMERA_Focus_Constant(void);
-void CAMERA_NA(void);
-void photo(void);
 
 //  LCD 
 typedef struct  

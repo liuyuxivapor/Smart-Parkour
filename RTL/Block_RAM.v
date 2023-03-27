@@ -2,7 +2,7 @@
  * @Author: Xuejian Sun 
  * @Date: 2023-02-23 13:06:14 
  * @Last Modified by: Xuejian Sun
- * @Last Modified time: 2023-03-27 16:51:47
+ * @Last Modified time: 2023-03-27 17:37:13
  */
 
 module Block_RAM #(
@@ -18,9 +18,9 @@ module Block_RAM #(
 
   reg [31:0] mem [(2**ADDR_WIDTH-1):0];
 
-  // initial begin
-  //   $readmemh("E:\ciciec\arm\Smart-Parkour\code.hex", mem);
-  // end
+  initial begin
+    $readmemh("E:\ciciec\arm\Smart-Parkour\code.hex", mem);
+  end
 
   always@(posedge clka) begin
     if(wea[0]) mem[addra][7:0] <= dina[7:0];
