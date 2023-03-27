@@ -414,11 +414,6 @@
               <FilePath>.\main.c</FilePath>
             </File>
             <File>
-              <FileName>camera.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\camera.c</FilePath>
-            </File>
-            <File>
               <FileName>code_def.c</FileName>
               <FileType>1</FileType>
               <FilePath>.\code_def.c</FilePath>
@@ -438,6 +433,11 @@
               <FileType>1</FileType>
               <FilePath>.\keyboard.c</FilePath>
             </File>
+            <File>
+              <FileName>gyroscope.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\gyroscope.c</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
@@ -449,14 +449,14 @@
               <FilePath>.\lcdfont.h</FilePath>
             </File>
             <File>
-              <FileName>camera_initial_reg_file.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\camera_initial_reg_file.h</FilePath>
-            </File>
-            <File>
               <FileName>code_def.h</FileName>
               <FileType>5</FileType>
               <FilePath>.\code_def.h</FilePath>
+            </File>
+            <File>
+              <FileName>gyroscope.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\gyroscope.h</FilePath>
             </File>
           </Files>
         </Group>

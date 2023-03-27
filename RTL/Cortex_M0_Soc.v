@@ -2,7 +2,7 @@
  * @Author: Xuejian Sun 
  * @Date: 2023-02-23 10:58:51 
  * @Last Modified by: Xuejian Sun
- * @Last Modified time: 2023-03-27 16:45:09
+ * @Last Modified time: 2023-03-27 19:22:17
  */
 
 module Cortex_M0_Soc (
@@ -240,19 +240,19 @@ module Cortex_M0_Soc (
   wire    [31:0]  HRDATA_P3;
   wire            HRESP_P3;
 
-  wire            HSEL_P4;
-  wire    [31:0]  HADDR_P4;
-  wire    [2:0]   HBURST_P4;
-  wire            HMASTLOCK_P4;
-  wire    [3:0]   HPROT_P4;
-  wire    [2:0]   HSIZE_P4;
-  wire    [1:0]   HTRANS_P4;
-  wire    [31:0]  HWDATA_P4;
-  wire            HWRITE_P4;
-  wire            HREADY_P4;
-  wire            HREADYOUT_P4;
-  wire    [31:0]  HRDATA_P4;
-  wire            HRESP_P4;
+  // wire            HSEL_P4;
+  // wire    [31:0]  HADDR_P4;
+  // wire    [2:0]   HBURST_P4;
+  // wire            HMASTLOCK_P4;
+  // wire    [3:0]   HPROT_P4;
+  // wire    [2:0]   HSIZE_P4;
+  // wire    [1:0]   HTRANS_P4;
+  // wire    [31:0]  HWDATA_P4;
+  // wire            HWRITE_P4;
+  // wire            HREADY_P4;
+  // wire            HREADYOUT_P4;
+  // wire    [31:0]  HRDATA_P4;
+  // wire            HRESP_P4;
 
   wire            HSEL_P5;
   wire    [31:0]  HADDR_P5;
@@ -359,20 +359,20 @@ module Cortex_M0_Soc (
     .HRDATA_P3      (HRDATA_P3),
     .HRESP_P3       (HRESP_P3),
 
-    // P4
-    .HSEL_P4        (HSEL_P4),
-    .HADDR_P4       (HADDR_P4),
-    .HBURST_P4      (HBURST_P4),
-    .HMASTLOCK_P4   (HMASTLOCK_P4),
-    .HPROT_P4       (HPROT_P4),
-    .HSIZE_P4       (HSIZE_P4),
-    .HTRANS_P4      (HTRANS_P4),
-    .HWDATA_P4      (HWDATA_P4),
-    .HWRITE_P4      (HWRITE_P4),
-    .HREADY_P4      (HREADY_P4),
-    .HREADYOUT_P4   (HREADYOUT_P4),
-    .HRDATA_P4      (HRDATA_P4),
-    .HRESP_P4       (HRESP_P4),
+    // // P4
+    // .HSEL_P4        (HSEL_P4),
+    // .HADDR_P4       (HADDR_P4),
+    // .HBURST_P4      (HBURST_P4),
+    // .HMASTLOCK_P4   (HMASTLOCK_P4),
+    // .HPROT_P4       (HPROT_P4),
+    // .HSIZE_P4       (HSIZE_P4),
+    // .HTRANS_P4      (HTRANS_P4),
+    // .HWDATA_P4      (HWDATA_P4),
+    // .HWRITE_P4      (HWRITE_P4),
+    // .HREADY_P4      (HREADY_P4),
+    // .HREADYOUT_P4   (HREADYOUT_P4),
+    // .HRDATA_P4      (HRDATA_P4),
+    // .HRESP_P4       (HRESP_P4),
 
     // P5
     .HSEL_P5        (HSEL_P5),
@@ -437,42 +437,42 @@ module Cortex_M0_Soc (
     .BRAM_WRITE     (RAMCODE_WRITE)
   );
 
-  // --------------------
-  // AHB Camera
-  // --------------------
+  // // --------------------
+  // // AHB Camera
+  // // --------------------
 
-  wire    [15:0]    Camera_ADDR;
-  wire    [31:0]    Camera_RDATA;
-  wire              Camera_VALID;
-  wire              Camera_READY;
-  wire              REG_READY;
-  wire    [31:0]    CNT;
+  // wire    [15:0]    Camera_ADDR;
+  // wire    [31:0]    Camera_RDATA;
+  // wire              Camera_VALID;
+  // wire              Camera_READY;
+  // wire              REG_READY;
+  // wire    [31:0]    CNT;
 
-  AHBlite_Camera Camera_Interface(
-    /* Connect to Interconnect Port 4 */
-    .HCLK                   (clk),
-    .HRESETn                (cpuresetn),
-    .HSEL                   (HSEL_P4),
-    .HADDR                  (HADDR_P4),
-    .HPROT                  (HPROT_P4),
-    .HSIZE                  (HSIZE_P4),
-    .HTRANS                 (HTRANS_P4),
-    .HWDATA                 (HWDATA_P4),
-    .HWRITE                 (HWRITE_P4),
-    .HRDATA                 (HRDATA_P4),
-    .HREADY                 (HREADY_P4),
-    .HREADYOUT              (HREADYOUT_P4),
-    .HRESP                  (HRESP_P4),
+  // AHBlite_Camera Camera_Interface(
+  //   /* Connect to Interconnect Port 4 */
+  //   .HCLK                   (clk),
+  //   .HRESETn                (cpuresetn),
+  //   .HSEL                   (HSEL_P4),
+  //   .HADDR                  (HADDR_P4),
+  //   .HPROT                  (HPROT_P4),
+  //   .HSIZE                  (HSIZE_P4),
+  //   .HTRANS                 (HTRANS_P4),
+  //   .HWDATA                 (HWDATA_P4),
+  //   .HWRITE                 (HWRITE_P4),
+  //   .HRDATA                 (HRDATA_P4),
+  //   .HREADY                 (HREADY_P4),
+  //   .HREADYOUT              (HREADYOUT_P4),
+  //   .HRESP                  (HRESP_P4),
     
-    .ADDR                   (Camera_ADDR),
-    .RDATA                  (Camera_RDATA),
-    .DATA_VALID             (Camera_VALID),
-    .DATA_READY             (Camera_READY),
-    .PWDN                   (CAMERA_PWDN),
-    .RST                    (CAMERA_RST),
-    .CAMERA_SCL             (CAMERA_SCL),
-    .CAMERA_SDA             (CAMERA_SDA)
-  );
+  //   .ADDR                   (Camera_ADDR),
+  //   .RDATA                  (Camera_RDATA),
+  //   .DATA_VALID             (Camera_VALID),
+  //   .DATA_READY             (Camera_READY),
+  //   .PWDN                   (CAMERA_PWDN),
+  //   .RST                    (CAMERA_RST),
+  //   .CAMERA_SCL             (CAMERA_SCL),
+  //   .CAMERA_SDA             (CAMERA_SDA)
+  // );
 
   // --------------------
   // AHB LED
@@ -675,22 +675,22 @@ module Cortex_M0_Soc (
     .bps_en(bps_en_tx)
   );
 
-  // --------------------
-  // CAMERA
-  // --------------------
+  // // --------------------
+  // // CAMERA
+  // // --------------------
 
-  Camera CAMERA(
-    .HCLK                           (clk),
-    .PCLK                           (CAMERA_PCLK),
-    .HRESETn                        (cpuresetn),
-    .DATA_VALID                     (Camera_VALID),
-    .DATA_READY                     (Camera_READY),
-    .DualRAM_RADDR                  (Camera_ADDR),
-    .DualRAM_RDATA                  (Camera_RDATA),
-    .Camera_idata                   (CAMERA_DATA),
-    .VSYNC                          (CAMERA_VSYNC),
-    .HREF                           (CAMERA_HREF),
-    .datavalid_test                 (datavalid_test)
-  );
+  // Camera CAMERA(
+  //   .HCLK                           (clk),
+  //   .PCLK                           (CAMERA_PCLK),
+  //   .HRESETn                        (cpuresetn),
+  //   .DATA_VALID                     (Camera_VALID),
+  //   .DATA_READY                     (Camera_READY),
+  //   .DualRAM_RADDR                  (Camera_ADDR),
+  //   .DualRAM_RDATA                  (Camera_RDATA),
+  //   .Camera_idata                   (CAMERA_DATA),
+  //   .VSYNC                          (CAMERA_VSYNC),
+  //   .HREF                           (CAMERA_HREF),
+  //   .datavalid_test                 (datavalid_test)
+  // );
   
 endmodule

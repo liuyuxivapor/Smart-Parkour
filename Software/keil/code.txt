@@ -29,8 +29,8 @@
     Program header entries: 1
     Section header entries: 16
 
-    Program header offset: 38096 (0x000094d0)
-    Section header offset: 38128 (0x000094f0)
+    Program header offset: 38672 (0x00009710)
+    Section header offset: 38704 (0x00009730)
 
     Section header string table index: 15
 
@@ -1432,9 +1432,9 @@
     Flags       : None (0x00000000)
     Addr        : 0x00000000
     File Offset : 25444 (0x6364)
-    Size        : 5040 bytes (0x13b0)
+    Size        : 5104 bytes (0x13f0)
     Link        : Section 12 (.strtab)
-    Info        : Last local symbol no = 208
+    Info        : Last local symbol no = 212
     Alignment   : 4
     Entry Size  : 16
 
@@ -1447,8 +1447,8 @@
     Type        : SHT_STRTAB (0x00000003)
     Flags       : None (0x00000000)
     Addr        : 0x00000000
-    File Offset : 30484 (0x7714)
-    Size        : 4144 bytes (0x1030)
+    File Offset : 30548 (0x7754)
+    Size        : 4176 bytes (0x1050)
     Link        : SHN_UNDEF
     Info        : 0
     Alignment   : 1
@@ -1463,7 +1463,7 @@
     Type        : SHT_NOTE (0x00000007)
     Flags       : None (0x00000000)
     Addr        : 0x00000000
-    File Offset : 34628 (0x8744)
+    File Offset : 34724 (0x87a4)
     Size        : 28 bytes (0x1c)
     Link        : SHN_UNDEF
     Info        : 0
@@ -1485,8 +1485,8 @@
     Type        : SHT_PROGBITS (0x00000001)
     Flags       : None (0x00000000)
     Addr        : 0x00000000
-    File Offset : 34656 (0x8760)
-    Size        : 3284 bytes (0xcd4)
+    File Offset : 34752 (0x87c0)
+    Size        : 3764 bytes (0xeb4)
     Link        : SHN_UNDEF
     Info        : 0
     Alignment   : 1
@@ -1527,12 +1527,15 @@
     Component: ARM Compiler 5.05 update 1 (build 106) Tool: ArmCC [4d0efa]
     ArmCC --c99 --split_sections --debug -c -o.\keyboard.o --depend=.\keyboard.d --cpu=Cortex-M0 --apcs=interwork -O3 --diag_suppress=9931 -I\\wsl.localhost\Ubuntu-20.04\home\vapor\codes\arm\Smart-Parkour\Software\keil\RTE -ID:\Software\Keil_v5\ARM\PACK\Keil\V2M-MPS2_CMx_BSP\1.8.0 -ID:\Software\Keil_v5\ARM\CMSIS\Include -D__UVISION_VERSION=514 -DCMSDK_CM0 --omf_browse=.\keyboard.crf keyboard.c
     
+    gyroscope.o
+    
+    Component: ARM Compiler 5.05 update 1 (build 106) Tool: ArmCC [4d0efa]
+    ArmCC --c99 --split_sections --debug -c -o.\gyroscope.o --depend=.\gyroscope.d --cpu=Cortex-M0 --apcs=interwork -O3 --diag_suppress=9931 -I\\wsl.localhost\Ubuntu-20.04\home\vapor\codes\arm\Smart-Parkour\Software\keil\RTE -ID:\Software\Keil_v5\ARM\PACK\Keil\V2M-MPS2_CMx_BSP\1.8.0 -ID:\Software\Keil_v5\ARM\CMSIS\Include -D__UVISION_VERSION=514 -DCMSDK_CM0 --omf_browse=.\gyroscope.crf gyroscope.c
+    
     startup_cmsdk_cm0.o
     
     Component: ARM Compiler 5.05 update 1 (build 106) Tool: armasm [4d0efa]
     ArmAsm --debug --diag_suppress=9931 --cpu=Cortex-M0 --apcs=interwork --depend=.\startup_cmsdk_cm0.d  -I\\wsl.localhost\Ubuntu-20.04\home\vapor\codes\arm\Smart-Parkour\Software\keil\RTE -ID:\Software\Keil_v5\ARM\PACK\Keil\V2M-MPS2_CMx_BSP\1
-    
-    
     
     
 
@@ -1544,7 +1547,7 @@
     Type        : SHT_STRTAB (0x00000003)
     Flags       : None (0x00000000)
     Addr        : 0x00000000
-    File Offset : 37940 (0x9434)
+    File Offset : 38516 (0x9674)
     Size        : 156 bytes (0x9c)
     Link        : SHN_UNDEF
     Info        : 0

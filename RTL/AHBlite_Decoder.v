@@ -2,7 +2,7 @@
  * @Author: Xuejian Sun 
  * @Date: 2023-02-23 13:16:55 
  * @Last Modified by: Xuejian Sun
- * @Last Modified time: 2023-03-27 16:31:59
+ * @Last Modified time: 2023-03-27 19:22:49
  */
 
 module AHBlite_Decoder 
@@ -23,9 +23,9 @@ module AHBlite_Decoder
   parameter Port3_en = 1,
   /************************/
 
-  /*Camera enable parameter*/
-  parameter Port4_en = 1,
-  /************************/
+  // /*Camera enable parameter*/
+  // parameter Port4_en = 1,
+  // /************************/
 
   /*LED enable parameter*/
   parameter Port5_en = 1,
@@ -49,8 +49,8 @@ module AHBlite_Decoder
   /*UART OUTPUT SELECTION SIGNAL*/
   output wire P3_HSEL, 
 
-  /*Camera OUTPUT SELECTION SIGNAL*/
-  output wire P4_HSEL,
+  // /*Camera OUTPUT SELECTION SIGNAL*/
+  // output wire P4_HSEL,
 
   /*LED OUTPUT SELECTION SIGNAL*/
   output wire P5_HSEL,
@@ -85,10 +85,10 @@ module AHBlite_Decoder
   /*Insert UART decoder code there*/
   assign P3_HSEL = (HADDR[31:4] == 28'h4000001) ? Port3_en : 1'd0;
 
-  //0X4030000 Camera
-  /*Insert Camera decoder code there*/
-  assign P4_HSEL = (HADDR[31:20] == 12'h403) ? Port4_en : 1'b0;  
-  /***********************************/
+  // //0X4030000 Camera
+  // /*Insert Camera decoder code there*/
+  // assign P4_HSEL = (HADDR[31:20] == 12'h403) ? Port4_en : 1'b0;  
+  // /***********************************/
 
   //0X40040000 LED
   /*Insert LED decoder code there*/
