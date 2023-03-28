@@ -1,8 +1,8 @@
 #include "UI.h"
 uint16_t ui_welcome(uint32_t start)
 {
-    char start_word[5] = "START";
-    char tip_word[28] = "Please Press start to Strat";
+    uint8_t start_word[5] = "START";
+    uint8_t tip_word[28] = "Please Press start to Strat";
     while(1)
     {
         LCD_ShowString(310,320,180,30,24,start_word);
@@ -16,8 +16,8 @@ uint16_t ui_welcome(uint32_t start)
 //显示起始页面,按键后返回0值代表游戏开始
 uint16_t ui_pause(uint32_t end, uint32_t con)
 {
-    char pause_word[5] = "PAUSE";
-    char tip_word[50] = "Please Press end to Exit or Press con to Continue";
+    uint8_t pause_word[5] = "PAUSE";
+    uint8_t tip_word[50] = "Please Press end to Exit or Press con to Continue";
     while(1)
     {
         LCD_ShowString(310,320,180,30,24,pause_word);
@@ -35,9 +35,9 @@ uint16_t ui_pause(uint32_t end, uint32_t con)
 //显示暂停页面，按键end后返回0，按键con后返回1
 uint16_t ui_end(uint32_t end,uint32_t restart,uint16_t score)
 {
-    char end_word[3] = "END";
-    char score_word[6] = "Score:";
-    char tip_word[24] = "Please Press end to Exit";
+    uint8_t end_word[3] = "END";
+    uint8_t score_word[6] = "Score:";
+    uint8_t tip_word[24] = "Please Press end to Exit";
     while(1)
     {
         LCD_ShowString(346,320,108,30,24,end_word);
