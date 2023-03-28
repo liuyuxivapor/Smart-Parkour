@@ -10,6 +10,8 @@ void SYSInit(void)
 
 	// Systick initial
 	Set_SysTick_CTRL(0);
+
+	GyroInit();
 }
 
 void delay_us(int us)

@@ -102,7 +102,7 @@ uint16_t cartoon_draw_bar(uint16_t type, uint16_t start_point, uint16_t height, 
         return 0;
     }
 
-    LCD_Color_Fill(start_point_x - 200, start_point_y, end_point_x - 200, end_point_y, (uint16_t*)GREEN);
+    LCD_Fill(start_point_x - 200, start_point_y, end_point_x - 200, end_point_y, GREEN);
     return 1;
 }
 /*绘制一个普通条，type规定类型（1为上方，0为下方）,start_point规定起始点（最左端最边缘处）,
@@ -116,14 +116,14 @@ void cartoon_move_forward(uint16_t speed,struct Cartoon_pictures *picture)
         if(p_oc_pos->oc_edge_position<speed)
         {
             p_oc_pos->oc_edge_position = 0;
-            p_oc_pos = p_oc_pos->next;
+            
         }
         else
         {
             p_oc_pos->oc_edge_position = p_oc_pos->oc_edge_position-speed;
-            p_oc_pos = p_oc_pos->next;
+            
         }
-        
+        p_oc_pos = p_oc_pos->next;
     }while(p_oc_pos != NULL);
 }
 //场景（障碍物）向左移动,模拟鸟飞行,输入移动数据

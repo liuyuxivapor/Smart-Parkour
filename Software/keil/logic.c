@@ -8,7 +8,7 @@ uint16_t logic_random_num(uint16_t max_num, uint16_t min_num, uint64_t *seed_x)
     uint64_t rand_num = 0;
     uint64_t range=max_num-min_num;
     *seed_x = (a * *seed_x + c) % m;  // 生成新的随机数
-    rand_num = *seed_x % range + 1 + min_num;  // 将生成的随机数映射到最大值和最小值之间
+    rand_num = *seed_x % range + min_num;  // 将生成的随机数映射到最大值和最小值之间
     rand_num = (uint16_t)rand_num;
     return rand_num;
 }

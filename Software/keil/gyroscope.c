@@ -20,7 +20,7 @@ void GyroData(void)
 	static unsigned char ucRxCnt = 0;	
 
 	ucRxBuffer[ucRxCnt++] = ReadUART();	
-	if (ucRxBuffer[0]!=0x55) 
+	if (ucRxBuffer[0]!=0x55)
 	{
 		ucRxCnt=0;
 		return;
@@ -36,7 +36,7 @@ void GyroData(void)
       default: break;
 		}
 		ucRxCnt=0;
-  }
+     }
 
   delay_ms(10);
 }
