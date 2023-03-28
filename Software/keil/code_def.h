@@ -1,3 +1,6 @@
+#ifndef __CODE_DEF_H
+#define __CODE_DEF_H
+
 #include <stdint.h>
 
 // SYSInit
@@ -249,3 +252,5 @@ typedef struct{
 
 #define LED_BASE 0x40040000
 #define LED ((LEDType *)LED_BASE)
+
+#endif

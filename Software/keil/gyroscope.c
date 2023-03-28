@@ -6,7 +6,7 @@ struct SAcc stcAcc;
 struct SGyro stcGyro;
 struct SAngle stcAngle;
 
-void Gyro_Init(void) 
+void GyroInit(void) 
 {
   memset(&stcAcc, 0, sizeof(stcAcc));
   memset(&stcGyro, 0, sizeof(stcGyro));

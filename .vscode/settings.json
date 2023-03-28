@@ -1,6 +1,8 @@
 {
   "files.associations": {
+    "*.m": "matlab",
     "code_def.h": "c",
-    "stdint.h": "c"
+    "stdint.h": "c",
+    "stdio.h": "c"
   }
 }

@@ -1,0 +1,17 @@
+cartoon_bird_init中:
+矩阵中每个四位uin16_t均储存该位置对应的像素信息，且
+与code_def.h中的颜色定义对应如下：
+000   WHITE
+001   BLACK
+002   BLUE
+003   BRED
+004   GRED
+005   GBLUE
+006   RED
+007   MAGENTA
+008   GREEN
+009   CYAN
+010   YELLOW
+011   BROWN
+012   BRRED
+013   GRAY

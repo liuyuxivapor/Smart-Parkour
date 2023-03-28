@@ -438,6 +438,11 @@
               <FileType>1</FileType>
               <FilePath>.\gyroscope.c</FilePath>
             </File>
+            <File>
+              <FileName>UI.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\UI.c</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
@@ -457,6 +462,11 @@
               <FileName>gyroscope.h</FileName>
               <FileType>5</FileType>
               <FilePath>.\gyroscope.h</FilePath>
+            </File>
+            <File>
+              <FileName>UI.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\UI.h</FilePath>
             </File>
           </Files>
         </Group>
