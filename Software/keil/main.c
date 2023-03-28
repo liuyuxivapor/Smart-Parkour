@@ -7,6 +7,9 @@
 
 extern uint32_t key0_flag, key1_flag, key2_flag, key3_flag;
 /*key0���� key1�½� key2���� key3����*/
+extern struct SAcc stcAcc;
+extern struct SGyro stcGyro;
+extern struct SAngle stcAngle;
 
 int main(void)
 {
