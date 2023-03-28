@@ -108,3 +108,16 @@ uint16_t logic_collide(struct Logic_player_bird_position *birdpos, struct Logic_
 //{
 //    
 //}
+
+uint32_t logic_float_to_u32(float x)
+{
+    uint8_t buf[4];
+
+    buf[0] = ((uint8_t*)&x)[0];
+    buf[1] = ((uint8_t*)&x)[1];
+    buf[2] = ((uint8_t*)&x)[2];
+    buf[3] = ((uint8_t*)&x)[3];
+
+    return (buf[0] << 24) + (buf[1] << 16) + (buf[2] << 8) + buf[3];
+}
+
