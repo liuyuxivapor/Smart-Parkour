@@ -11,8 +11,7 @@
 #define BIRD_START_Y 8//鸟在绘制范围中的偏移
 /*本文件定义游戏动画*/
 
-uint16_t Cartoon_bird_view[BIRD_VIEW_Y][BIRD_VIEW_X];
-//储存鸟图片像素颜色
+
 
 struct Cartoon_pictures
 {
@@ -20,9 +19,6 @@ struct Cartoon_pictures
     struct Logic_player_bird_position bird_position;
     struct Logic_ocstacle_position *head;   
 };
-
-uint16_t Cartoon_bird_shift[2];
-//图片起始点相对绘制起始点的偏移量 0x 1y
 
 void cartoon_debug_bird_range(struct Logic_player_bird_position player_bird);
 //仅调试时使用，用方框标出鸟的图像范围和碰撞范围

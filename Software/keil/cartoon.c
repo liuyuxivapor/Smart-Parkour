@@ -1,5 +1,11 @@
 #include "cartoon.h"
 
+uint16_t Cartoon_bird_view[BIRD_VIEW_Y][BIRD_VIEW_X];
+//储存鸟图片像素颜色
+
+uint16_t Cartoon_bird_shift[2];
+//图片起始点相对绘制起始点的偏移量 0x 1y
+
 void cartoon_bird_init(uint16_t *bird_view)
 {
     for(uint16_t i=0; i<BIRD_VIEW_Y; i++)
