@@ -1,0 +1,39 @@
+standard
+***Report Model: Cortex_M0_Soc***
+
+IO Statistics
+#IO                        61
+  #input                   19
+  #output                  40
+  #inout                    2
+
+Gate Statistics
+#Basic gates            20696
+  #and                   9782
+  #nand                     0
+  #or                    2151
+  #nor                      0
+  #xor                     73
+  #xnor                     0
+  #buf                      0
+  #not                   6530
+  #bufif1                   5
+  #MX21                   578
+  #FADD                     0
+  #DFF                   1577
+  #LATCH                    0
+#MACRO_ADD                 21
+#MACRO_EQ                 115
+#MACRO_MULT                 1
+#MACRO_MUX                229
+#MACRO_OTHERS              10
+
+Report Hierarchy Area:
++-------------------------------------------------------------+
+|Instance           |Module           |gates  |seq    |macros |
++-------------------------------------------------------------+
+|top                |Cortex_M0_Soc    |19119  |1577   |147    |
+|  Buzzer_Interface |AHBlite_Buzzer   |128    |66     |37     |
+|    BZ             |BZ_music         |122    |64     |37     |
+|  u_logic          |cortexm0ds_logic |18575  |1305   |14     |
++-------------------------------------------------------------+

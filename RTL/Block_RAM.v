@@ -19,7 +19,7 @@ module Block_RAM #(
   reg [31:0] mem [(2**ADDR_WIDTH-1):0];
 
   initial begin
-    $readmemh("E:\ciciec\arm\Smart-Parkour\code.hex", mem);
+    $readmemh("E:/ciciec/arm/Smart-Parkour/Software/keil/code.hex", mem);
   end
 
   always@(posedge clka) begin
