@@ -10,6 +10,6 @@ uint16_t ui_pause(uint32_t end, uint32_t con);
 uint16_t ui_end(uint32_t end,uint32_t restart,uint16_t score);
 //显示结束页面，按键end后返回0，按键restart后返回1，score为传入的分数统计值
 
-void ui_acc(uint32_t x, uint32_t y, uint32_t z);
-//陀螺仪测试，加速度显示
+void ui_gyro(uint32_t x, uint32_t y, uint32_t z);
+//陀螺仪测试，数值显示
 #endif

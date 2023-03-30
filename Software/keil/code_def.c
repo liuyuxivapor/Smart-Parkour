@@ -42,9 +42,9 @@ void delay_ms(int ms)
 	SysTick->VALUE = 0x00;
 }
 
-char ReadUARTState()
+uint32_t ReadUARTState()
 {
-    char state;
+    uint32_t state;
 	state = UART -> UARTTX_STATE;
     return(state);
 }

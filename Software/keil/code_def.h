@@ -45,7 +45,7 @@ typedef struct{
 #define UART ((UARTType *)UART_BASE)
 
 // UART
-char ReadUARTState(void);
+uint32_t state ReadUARTState(void);
 char ReadUART(void);
 void WriteUART(char data);
 void UARTString(char *stri);
