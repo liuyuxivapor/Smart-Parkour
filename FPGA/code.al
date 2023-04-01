@@ -2,7 +2,7 @@
 <Project Version="1" Path="E:/ciciec/arm/Smart-Parkour/FPGA">
     <Project_Created_Time>2023-03-29 09:14:53</Project_Created_Time>
     <TD_Version>5.0.43066</TD_Version>
-    <UCode>00000000</UCode>
+    <UCode>00100110</UCode>
     <Name>code</Name>
     <HardWare>
         <Family>EG4</Family>
@@ -232,8 +232,8 @@
     <Configurations>
     </Configurations>
     <Project_Settings>
-        <Step_Last_Change>2023-03-29 13:13:59.519</Step_Last_Change>
-        <Current_Step>30</Current_Step>
+        <Step_Last_Change>2023-03-30 19:09:46.094</Step_Last_Change>
+        <Current_Step>60</Current_Step>
         <Step_Status>true</Step_Status>
     </Project_Settings>
 </Project>

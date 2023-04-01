@@ -1,217 +1,97 @@
 standard
-***Report Model: AHBlite_Camera***
+***Report Model: Cortex_M0_Soc***
 
 IO Statistics
-#IO                       166
-  #input                  111
-  #output                  54
+#IO                        45
+  #input                    8
+  #output                  36
   #inout                    1
 
 Utilization Statistics
-#lut                       53   out of  19600    0.27%
-#reg                       17   out of  19600    0.09%
-#le                        63
-  #lut only                46   out of     63   73.02%
-  #reg only                10   out of     63   15.87%
-  #lut&reg                  7   out of     63   11.11%
-#dsp                        0   out of     29    0.00%
-#bram                       0   out of     64    0.00%
-  #bram9k                   0
+#lut                     6050   out of  19600   30.87%
+#reg                     1569   out of  19600    8.01%
+#le                      6082
+  #lut only              4513   out of   6082   74.20%
+  #reg only                32   out of   6082    0.53%
+  #lut&reg               1537   out of   6082   25.27%
+#dsp                        3   out of     29   10.34%
+#bram                      33   out of     64   51.56%
+  #bram9k                  33
   #fifo9k                   0
 #bram32k                    0   out of     16    0.00%
-#pad                      166   out of    188   88.30%
+#pad                       45   out of    188   23.94%
   #ireg                     0
   #oreg                     0
   #treg                     0
 #pll                        0   out of      4    0.00%
-#gclk                       1   out of     16    6.25%
+#gclk                       3   out of     16   18.75%
 
 
 Detailed IO Report
 
-     Name       Direction    Location    IOStandard    DriveStrength    PullType    PackReg  
-  DATA_READY      INPUT        A11        LVCMOS25          N/A           N/A        NONE    
-  HADDR[31]       INPUT         A2        LVCMOS25          N/A           N/A        NONE    
-  HADDR[30]       INPUT         K6        LVCMOS25          N/A           N/A        NONE    
-  HADDR[29]       INPUT         B6        LVCMOS25          N/A           N/A        NONE    
-  HADDR[28]       INPUT         L5        LVCMOS25          N/A           N/A        NONE    
-  HADDR[27]       INPUT         C2        LVCMOS25          N/A           N/A        NONE    
-  HADDR[26]       INPUT         H2        LVCMOS25          N/A           N/A        NONE    
-  HADDR[25]       INPUT        M13        LVCMOS25          N/A           N/A        NONE    
-  HADDR[24]       INPUT        M16        LVCMOS25          N/A           N/A        NONE    
-  HADDR[23]       INPUT        R14        LVCMOS25          N/A           N/A        NONE    
-  HADDR[22]       INPUT        C15        LVCMOS25          N/A           N/A        NONE    
-  HADDR[21]       INPUT         B2        LVCMOS25          N/A           N/A        NONE    
-  HADDR[20]       INPUT        T14        LVCMOS25          N/A           N/A        NONE    
-  HADDR[19]       INPUT        P14        LVCMOS25          N/A           N/A        NONE    
-  HADDR[18]       INPUT        F13        LVCMOS25          N/A           N/A        NONE    
-  HADDR[17]       INPUT         R1        LVCMOS25          N/A           N/A        NONE    
-  HADDR[16]       INPUT         C3        LVCMOS25          N/A           N/A        NONE    
-  HADDR[15]       INPUT         J4        LVCMOS25          N/A           N/A        NONE    
-  HADDR[14]       INPUT        M12        LVCMOS25          N/A           N/A        NONE    
-  HADDR[13]       INPUT        H13        LVCMOS25          N/A           N/A        NONE    
-  HADDR[12]       INPUT         N5        LVCMOS25          N/A           N/A        NONE    
-  HADDR[11]       INPUT        D11        LVCMOS25          N/A           N/A        NONE    
-  HADDR[10]       INPUT         J6        LVCMOS25          N/A           N/A        NONE    
-   HADDR[9]       INPUT         B3        LVCMOS25          N/A           N/A        NONE    
-   HADDR[8]       INPUT        T13        LVCMOS25          N/A           N/A        NONE    
-   HADDR[7]       INPUT        L10        LVCMOS25          N/A           N/A        NONE    
-   HADDR[6]       INPUT         A5        LVCMOS25          N/A           N/A        NONE    
-   HADDR[5]       INPUT         H4        LVCMOS25          N/A           N/A        NONE    
-   HADDR[4]       INPUT        N12        LVCMOS25          N/A           N/A        NONE    
-   HADDR[3]       INPUT         B8        LVCMOS25          N/A           N/A        NONE    
-   HADDR[2]       INPUT        K14        LVCMOS25          N/A           N/A        NONE    
-   HADDR[1]       INPUT        A12        LVCMOS25          N/A           N/A        NONE    
-   HADDR[0]       INPUT         N9        LVCMOS25          N/A           N/A        NONE    
-     HCLK         INPUT         F9        LVCMOS25          N/A           N/A        NONE    
-   HPROT[3]       INPUT        N11        LVCMOS25          N/A           N/A        NONE    
-   HPROT[2]       INPUT         A3        LVCMOS25          N/A           N/A        NONE    
-   HPROT[1]       INPUT         M9        LVCMOS25          N/A           N/A        NONE    
-   HPROT[0]       INPUT         K5        LVCMOS25          N/A           N/A        NONE    
-    HREADY        INPUT        R15        LVCMOS25          N/A           N/A        NONE    
-   HRESETn        INPUT         C8        LVCMOS25          N/A           N/A        NONE    
-     HSEL         INPUT        G12        LVCMOS25          N/A           N/A        NONE    
-   HSIZE[2]       INPUT         P8        LVCMOS25          N/A           N/A        NONE    
-   HSIZE[1]       INPUT         M1        LVCMOS25          N/A           N/A        NONE    
-   HSIZE[0]       INPUT         L7        LVCMOS25          N/A           N/A        NONE    
-  HTRANS[1]       INPUT         F1        LVCMOS25          N/A           N/A        NONE    
-  HTRANS[0]       INPUT         D5        LVCMOS25          N/A           N/A        NONE    
-  HWDATA[31]      INPUT         C7        LVCMOS25          N/A           N/A        NONE    
-  HWDATA[30]      INPUT        E16        LVCMOS25          N/A           N/A        NONE    
-  HWDATA[29]      INPUT        E12        LVCMOS25          N/A           N/A        NONE    
-  HWDATA[28]      INPUT        K16        LVCMOS25          N/A           N/A        NONE    
-  HWDATA[27]      INPUT        G11        LVCMOS25          N/A           N/A        NONE    
-  HWDATA[26]      INPUT        C13        LVCMOS25          N/A           N/A        NONE    
-  HWDATA[25]      INPUT        G14        LVCMOS25          N/A           N/A        NONE    
-  HWDATA[24]      INPUT        J13        LVCMOS25          N/A           N/A        NONE    
-  HWDATA[23]      INPUT        B15        LVCMOS25          N/A           N/A        NONE    
-  HWDATA[22]      INPUT         C5        LVCMOS25          N/A           N/A        NONE    
-  HWDATA[21]      INPUT         D3        LVCMOS25          N/A           N/A        NONE    
-  HWDATA[20]      INPUT         G6        LVCMOS25          N/A           N/A        NONE    
-  HWDATA[19]      INPUT        M15        LVCMOS25          N/A           N/A        NONE    
-  HWDATA[18]      INPUT        M11        LVCMOS25          N/A           N/A        NONE    
-  HWDATA[17]      INPUT        R12        LVCMOS25          N/A           N/A        NONE    
-  HWDATA[16]      INPUT        P10        LVCMOS25          N/A           N/A        NONE    
-  HWDATA[15]      INPUT         R5        LVCMOS25          N/A           N/A        NONE    
-  HWDATA[14]      INPUT         D9        LVCMOS25          N/A           N/A        NONE    
-  HWDATA[13]      INPUT         J3        LVCMOS25          N/A           N/A        NONE    
-  HWDATA[12]      INPUT        D16        LVCMOS25          N/A           N/A        NONE    
-  HWDATA[11]      INPUT        H15        LVCMOS25          N/A           N/A        NONE    
-  HWDATA[10]      INPUT         F4        LVCMOS25          N/A           N/A        NONE    
-  HWDATA[9]       INPUT         G1        LVCMOS25          N/A           N/A        NONE    
-  HWDATA[8]       INPUT        L12        LVCMOS25          N/A           N/A        NONE    
-  HWDATA[7]       INPUT         K3        LVCMOS25          N/A           N/A        NONE    
-  HWDATA[6]       INPUT         M6        LVCMOS25          N/A           N/A        NONE    
-  HWDATA[5]       INPUT         L1        LVCMOS25          N/A           N/A        NONE    
-  HWDATA[4]       INPUT        J16        LVCMOS25          N/A           N/A        NONE    
-  HWDATA[3]       INPUT        H14        LVCMOS25          N/A           N/A        NONE    
-  HWDATA[2]       INPUT         E4        LVCMOS25          N/A           N/A        NONE    
-  HWDATA[1]       INPUT         H5        LVCMOS25          N/A           N/A        NONE    
-  HWDATA[0]       INPUT         M2        LVCMOS25          N/A           N/A        NONE    
-    HWRITE        INPUT        J12        LVCMOS25          N/A           N/A        NONE    
-  RDATA[31]       INPUT        A13        LVCMOS25          N/A           N/A        NONE    
-  RDATA[30]       INPUT         D1        LVCMOS25          N/A           N/A        NONE    
-  RDATA[29]       INPUT        P15        LVCMOS25          N/A           N/A        NONE    
-  RDATA[28]       INPUT         P1        LVCMOS25          N/A           N/A        NONE    
-  RDATA[27]       INPUT        K12        LVCMOS25          N/A           N/A        NONE    
-  RDATA[26]       INPUT        E13        LVCMOS25          N/A           N/A        NONE    
-  RDATA[25]       INPUT         F6        LVCMOS25          N/A           N/A        NONE    
-  RDATA[24]       INPUT         K2        LVCMOS25          N/A           N/A        NONE    
-  RDATA[23]       INPUT         C9        LVCMOS25          N/A           N/A        NONE    
-  RDATA[22]       INPUT        H11        LVCMOS25          N/A           N/A        NONE    
-  RDATA[21]       INPUT         E6        LVCMOS25          N/A           N/A        NONE    
-  RDATA[20]       INPUT        K15        LVCMOS25          N/A           N/A        NONE    
-  RDATA[19]       INPUT        T10        LVCMOS25          N/A           N/A        NONE    
-  RDATA[18]       INPUT         H3        LVCMOS25          N/A           N/A        NONE    
-  RDATA[17]       INPUT        N16        LVCMOS25          N/A           N/A        NONE    
-  RDATA[16]       INPUT         F3        LVCMOS25          N/A           N/A        NONE    
-  RDATA[15]       INPUT        P11        LVCMOS25          N/A           N/A        NONE    
-  RDATA[14]       INPUT        D12        LVCMOS25          N/A           N/A        NONE    
-  RDATA[13]       INPUT         E3        LVCMOS25          N/A           N/A        NONE    
-  RDATA[12]       INPUT        P16        LVCMOS25          N/A           N/A        NONE    
-  RDATA[11]       INPUT         P6        LVCMOS25          N/A           N/A        NONE    
-  RDATA[10]       INPUT        E11        LVCMOS25          N/A           N/A        NONE    
-   RDATA[9]       INPUT         F5        LVCMOS25          N/A           N/A        NONE    
-   RDATA[8]       INPUT        R11        LVCMOS25          N/A           N/A        NONE    
-   RDATA[7]       INPUT         D8        LVCMOS25          N/A           N/A        NONE    
-   RDATA[6]       INPUT        N14        LVCMOS25          N/A           N/A        NONE    
-   RDATA[5]       INPUT         G5        LVCMOS25          N/A           N/A        NONE    
-   RDATA[4]       INPUT        F16        LVCMOS25          N/A           N/A        NONE    
-   RDATA[3]       INPUT         A4        LVCMOS25          N/A           N/A        NONE    
-   RDATA[2]       INPUT        R16        LVCMOS25          N/A           N/A        NONE    
-   RDATA[1]       INPUT         E8        LVCMOS25          N/A           N/A        NONE    
-   RDATA[0]       INPUT        C16        LVCMOS25          N/A           N/A        NONE    
-   ADDR[15]      OUTPUT        H16        LVCMOS25           8            N/A        NONE    
-   ADDR[14]      OUTPUT        G16        LVCMOS25           8            N/A        NONE    
-   ADDR[13]      OUTPUT        A10        LVCMOS25           8            N/A        NONE    
-   ADDR[12]      OUTPUT         L4        LVCMOS25           8            N/A        NONE    
-   ADDR[11]      OUTPUT         G3        LVCMOS25           8            N/A        NONE    
-   ADDR[10]      OUTPUT        P12        LVCMOS25           8            N/A        NONE    
-   ADDR[9]       OUTPUT        J11        LVCMOS25           8            N/A        NONE    
-   ADDR[8]       OUTPUT         N1        LVCMOS25           8            N/A        NONE    
-   ADDR[7]       OUTPUT         D6        LVCMOS25           8            N/A        NONE    
-   ADDR[6]       OUTPUT         K1        LVCMOS25           8            N/A        NONE    
-   ADDR[5]       OUTPUT        E15        LVCMOS25           8            N/A        NONE    
-   ADDR[4]       OUTPUT         B1        LVCMOS25           8            N/A        NONE    
-   ADDR[3]       OUTPUT         A8        LVCMOS25           8            N/A        NONE    
-   ADDR[2]       OUTPUT        M10        LVCMOS25           8            N/A        NONE    
-   ADDR[1]       OUTPUT        J14        LVCMOS25           8            N/A        NONE    
-   ADDR[0]       OUTPUT         T3        LVCMOS25           8            N/A        NONE    
-  CAMERA_SCL     OUTPUT         R9        LVCMOS25           8            N/A        NONE    
-  DATA_VALID     OUTPUT        L14        LVCMOS25           8            N/A        NONE    
-  HRDATA[31]     OUTPUT         E2        LVCMOS25           8            N/A        NONE    
-  HRDATA[30]     OUTPUT        E10        LVCMOS25           8            N/A        NONE    
-  HRDATA[29]     OUTPUT         N3        LVCMOS25           8            N/A        NONE    
-  HRDATA[28]     OUTPUT         A7        LVCMOS25           8            N/A        NONE    
-  HRDATA[27]     OUTPUT         T8        LVCMOS25           8            N/A        NONE    
-  HRDATA[26]     OUTPUT        T15        LVCMOS25           8            N/A        NONE    
-  HRDATA[25]     OUTPUT         H1        LVCMOS25           8            N/A        NONE    
-  HRDATA[24]     OUTPUT        B14        LVCMOS25           8            N/A        NONE    
-  HRDATA[23]     OUTPUT         R7        LVCMOS25           8            N/A        NONE    
-  HRDATA[22]     OUTPUT         J1        LVCMOS25           8            N/A        NONE    
-  HRDATA[21]     OUTPUT         C1        LVCMOS25           8            N/A        NONE    
-  HRDATA[20]     OUTPUT        A14        LVCMOS25           8            N/A        NONE    
-  HRDATA[19]     OUTPUT         T7        LVCMOS25           8            N/A        NONE    
-  HRDATA[18]     OUTPUT        L13        LVCMOS25           8            N/A        NONE    
-  HRDATA[17]     OUTPUT        B16        LVCMOS25           8            N/A        NONE    
-  HRDATA[16]     OUTPUT         P7        LVCMOS25           8            N/A        NONE    
-  HRDATA[15]     OUTPUT         R2        LVCMOS25           8            N/A        NONE    
-  HRDATA[14]     OUTPUT        K11        LVCMOS25           8            N/A        NONE    
-  HRDATA[13]     OUTPUT         E1        LVCMOS25           8            N/A        NONE    
-  HRDATA[12]     OUTPUT        B12        LVCMOS25           8            N/A        NONE    
-  HRDATA[11]     OUTPUT        F12        LVCMOS25           8            N/A        NONE    
-  HRDATA[10]     OUTPUT         L8        LVCMOS25           8            N/A        NONE    
-  HRDATA[9]      OUTPUT        P13        LVCMOS25           8            N/A        NONE    
-  HRDATA[8]      OUTPUT        C11        LVCMOS25           8            N/A        NONE    
-  HRDATA[7]      OUTPUT        F10        LVCMOS25           8            N/A        NONE    
-  HRDATA[6]      OUTPUT         L3        LVCMOS25           8            N/A        NONE    
-  HRDATA[5]      OUTPUT        T11        LVCMOS25           8            N/A        NONE    
-  HRDATA[4]      OUTPUT         F2        LVCMOS25           8            N/A        NONE    
-  HRDATA[3]      OUTPUT         C6        LVCMOS25           8            N/A        NONE    
-  HRDATA[2]      OUTPUT        C10        LVCMOS25           8            N/A        NONE    
-  HRDATA[1]      OUTPUT        F15        LVCMOS25           8            N/A        NONE    
-  HRDATA[0]      OUTPUT         M3        LVCMOS25           8            N/A        NONE    
-  HREADYOUT      OUTPUT         C4        LVCMOS25           8            N/A        NONE    
-    HRESP        OUTPUT        D14        LVCMOS25           8            N/A        NONE    
-     PWDN        OUTPUT        L16        LVCMOS25           8            N/A        NONE    
-     RST         OUTPUT        M14        LVCMOS25           8            N/A        NONE    
-  CAMERA_SDA      INOUT         N6        LVCMOS25           8            N/A        NONE    
+      Name        Direction    Location    IOStandard    DriveStrength    PullType    PackReg  
+      RSTn          INPUT         A9        LVCMOS33          N/A          PULLUP      NONE    
+      RXD           INPUT        F12        LVCMOS33          N/A          PULLUP      NONE    
+     SWCLK          INPUT         R2        LVCMOS33          N/A          PULLUP      NONE    
+      clk           INPUT         R7        LVCMOS33          N/A          PULLUP      NONE    
+     col[3]         INPUT        F10        LVCMOS33          N/A          PULLUP      NONE    
+     col[2]         INPUT        C11        LVCMOS33          N/A          PULLUP      NONE    
+     col[1]         INPUT        D11        LVCMOS33          N/A          PULLUP      NONE    
+     col[0]         INPUT        E11        LVCMOS33          N/A          PULLUP      NONE    
+   LCD_BL_CTR      OUTPUT         F5        LVCMOS33           8            NONE       NONE    
+     LCD_CS        OUTPUT         C7        LVCMOS33           8            NONE       NONE    
+  LCD_DATA[15]     OUTPUT         E3        LVCMOS33           8            NONE       NONE    
+  LCD_DATA[14]     OUTPUT         D3        LVCMOS33           8            NONE       NONE    
+  LCD_DATA[13]     OUTPUT         E4        LVCMOS33           8            NONE       NONE    
+  LCD_DATA[12]     OUTPUT         C2        LVCMOS33           8            NONE       NONE    
+  LCD_DATA[11]     OUTPUT         C1        LVCMOS33           8            NONE       NONE    
+  LCD_DATA[10]     OUTPUT         C3        LVCMOS33           8            NONE       NONE    
+  LCD_DATA[9]      OUTPUT         B1        LVCMOS33           8            NONE       NONE    
+  LCD_DATA[8]      OUTPUT         A2        LVCMOS33           8            NONE       NONE    
+  LCD_DATA[7]      OUTPUT         B2        LVCMOS33           8            NONE       NONE    
+  LCD_DATA[6]      OUTPUT         F6        LVCMOS33           8            NONE       NONE    
+  LCD_DATA[5]      OUTPUT         B3        LVCMOS33           8            NONE       NONE    
+  LCD_DATA[4]      OUTPUT         D5        LVCMOS33           8            NONE       NONE    
+  LCD_DATA[3]      OUTPUT         C4        LVCMOS33           8            NONE       NONE    
+  LCD_DATA[2]      OUTPUT         E6        LVCMOS33           8            NONE       NONE    
+  LCD_DATA[1]      OUTPUT         C5        LVCMOS33           8            NONE       NONE    
+  LCD_DATA[0]      OUTPUT         C6        LVCMOS33           8            NONE       NONE    
+     LCD_RD        OUTPUT         E7        LVCMOS33           8            NONE       NONE    
+     LCD_RS        OUTPUT         D8        LVCMOS33           8            NONE       NONE    
+    LCD_RST        OUTPUT         D6        LVCMOS33           8            NONE       NONE    
+     LCD_WR        OUTPUT         F7        LVCMOS33           8            NONE       NONE    
+     LED[7]        OUTPUT        F16        LVCMOS33           8            NONE       NONE    
+     LED[6]        OUTPUT        E16        LVCMOS33           8            NONE       NONE    
+     LED[5]        OUTPUT        E13        LVCMOS33           8            NONE       NONE    
+     LED[4]        OUTPUT        C16        LVCMOS33           8            NONE       NONE    
+     LED[3]        OUTPUT        C15        LVCMOS33           8            NONE       NONE    
+     LED[2]        OUTPUT        B16        LVCMOS33           8            NONE       NONE    
+     LED[1]        OUTPUT        B15        LVCMOS33           8            NONE       NONE    
+     LED[0]        OUTPUT        B14        LVCMOS33           8            NONE       NONE    
+      TXD          OUTPUT        D12        LVCMOS33           8            NONE       NONE    
+      beep         OUTPUT        H11        LVCMOS33           8            NONE       NONE    
+     row[3]        OUTPUT         D9        LVCMOS33           8            NONE       NONE    
+     row[2]        OUTPUT         F9        LVCMOS33           8            NONE       NONE    
+     row[1]        OUTPUT        C10        LVCMOS33           8            NONE       NONE    
+     row[0]        OUTPUT        E10        LVCMOS33           8            NONE       NONE    
+     SWDIO          INOUT         P2        LVCMOS33           8           PULLUP      NONE    
 
 Report Hierarchy Area:
-+------------------------------------------------------------------------+
-|Instance |Module         |le    |lut    |ripple |seq    |bram   |dsp    |
-+------------------------------------------------------------------------+
-|top      |AHBlite_Camera |63    |53     |0      |17     |0      |0      |
-+------------------------------------------------------------------------+
++-----------------------------------------------------------------------+
+|Instance |Module        |le    |lut    |ripple |seq    |bram   |dsp    |
++-----------------------------------------------------------------------+
+|top      |Cortex_M0_Soc |6082  |5933   |117    |1569   |33     |3      |
++-----------------------------------------------------------------------+
 
 
 DataNet Average Fanout:
 
    Index     Fanout    Nets  
-    #1         1        92   
-    #2         2        19   
-    #3         3        2    
-    #4         4        2    
-    #5        5-10      4    
-    #6       11-50      3    
-  Average     1.95           
+    #1         1       3085  
+    #2         2       1677  
+    #3         3       568   
+    #4         4       448   
+    #5        5-10     669   
+    #6       11-50     415   
+    #7       51-100     19   
+  Average     3.59           

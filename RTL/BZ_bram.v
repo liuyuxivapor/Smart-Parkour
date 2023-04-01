@@ -14,7 +14,7 @@ module BZ_bram
 
 initial 
 begin
-   $readmemh("E:/ciciec/arm/Smart-Parkour/Software/keil/buzzer_music.txt", mem);
+   $readmemh("E:/ciciec/arm/Smart-Parkour/Software/keil/buzzer_music.hex", mem);
 end       
 	
 always @(posedge clk)

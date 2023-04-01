@@ -24,16 +24,16 @@ module Cortex_M0_Soc (
   input wire RXD,
   output wire TXD,
 
-  // CAMERA
-  output wire       CAMERA_PWDN,
-  output wire       CAMERA_RST,
-  output wire       CAMERA_SCL,
-  inout  wire       CAMERA_SDA,
-  input  wire       CAMERA_PCLK,
-  input  wire       CAMERA_VSYNC,
-  input  wire       CAMERA_HREF,
-  input  wire [7:0] CAMERA_DATA,
-  output wire       datavalid_test,
+  // // CAMERA
+  // output wire       CAMERA_PWDN,
+  // output wire       CAMERA_RST,
+  // output wire       CAMERA_SCL,
+  // inout  wire       CAMERA_SDA,
+  // input  wire       CAMERA_PCLK,
+  // input  wire       CAMERA_VSYNC,
+  // input  wire       CAMERA_HREF,
+  // input  wire [7:0] CAMERA_DATA,
+  // output wire       datavalid_test,
 
   // KEYBOARD
   input  [3:0] col,
@@ -411,8 +411,8 @@ module Cortex_M0_Soc (
 
   wire [31:0] RAMCODE_RDATA;
   wire [31:0] RAMCODE_WDATA;
-  wire [13:0] RAMCODE_WADDR;
-  wire [13:0] RAMCODE_RADDR;
+  wire [11:0] RAMCODE_WADDR;
+  wire [11:0] RAMCODE_RADDR;
   wire [3:0]  RAMCODE_WRITE;
 
   AHBlite_Block_RAM RAMCODE_Interface(
@@ -530,8 +530,8 @@ module Cortex_M0_Soc (
 
   wire [31:0] RAMDATA_RDATA;
   wire [31:0] RAMDATA_WDATA;
-  wire [13:0] RAMDATA_WADDR;
-  wire [13:0] RAMDATA_RADDR;
+  wire [11:0] RAMDATA_WADDR;
+  wire [11:0] RAMDATA_RADDR;
   wire [3:0]  RAMDATA_WRITE;
 
   AHBlite_Block_RAM RAMDATA_Interface(
@@ -645,7 +645,7 @@ module Cortex_M0_Soc (
     `ifdef SIMULATION
     .BPS_PARA(16)
     `else
-    .BPS_PARA(347)
+    .BPS_PARA(217)
     `endif
   ) clkuart_pwm(
     .clk(clk),

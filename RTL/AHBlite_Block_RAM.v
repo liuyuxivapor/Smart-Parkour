@@ -6,7 +6,7 @@
  */
 
 module AHBlite_Block_RAM #(
-    parameter                       ADDR_WIDTH = 14)(
+    parameter                       ADDR_WIDTH = 12)(
     input  wire                     HCLK,    
     input  wire                     HRESETn, 
     input  wire                     HSEL,    

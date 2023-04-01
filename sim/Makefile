@@ -10,7 +10,7 @@
 SIMULATOR  = verilator
 
 # RTL source
-RTL_SRC = $(wildcard ../RTL/*.v ../RTL/buzzer/*.v)
+RTL_SRC = $(wildcard ../RTL/*.v)
 
 # verilator option
 WARE_IGNORE = --Wno-width --Wno-stmtdly --Wno-initialdly --Wno-combdly --Wno-unoptflat --Wno-pinmissing
@@ -53,22 +53,29 @@ obj_dir/verilated.o: obj_dir/VCortex_M0_Soc.mk | obj_dir
 	@if [ ! -d obj_dir ] ; then \
 	  make compile_verilator --no-print-directory; \
 	fi
-	make -C obj_dir -f VCortex_M0_Soc.mk verilated.o
+		make -C obj_dir -f VCortex_M0_Soc.mk verilated.o
 obj_dir/verilated_vcd_c.o: obj_dir/VCortex_M0_Soc.mk | obj_dir
 	@if [ ! -d obj_dir ] ; then \
 	  make compile_verilator --no-print-directory; \
 	fi
-	make -C obj_dir -f VCortex_M0_Soc.mk verilated_vcd_c.o
+		make -C obj_dir -f VCortex_M0_Soc.mk verilated_vcd_c.o
+sim__lcd: 
+	verilator -DUNITTEST -CFLAGS -std=c++11 --cc -exe ./sim_lcd/display_controller.v --top-module display_controller ./sim_lcd/sim_lcd.cpp
+	make -C obj_dir -f Vdisplay_controller.mk
+	./obj_dir/Vdisplay_controller
+
+sim__buzzer:
+	xxd -r -p ../Software/keil/buzzer_music.txt ../Software/keil/buzzer_music.hex
 
 sim_main:
 	make sim_verilator --no-print-directory
 
 sim_verilator : obj_dir/sim_main.o obj_dir/sim_uart.o obj_dir/VCortex_M0_Soc__ALL.a obj_dir/verilated.o obj_dir/verilated_vcd_c.o
+	make sim__lcd sim__buzzer
 	g++ -std=c++11 $(CFLAGS) $^ $(GFXLIBS) -o ./sim_main
 
 obj_dir/sim_main.o: ./sim_main.cpp ./testbench.h ./sim_uart.h
 obj_dir/sim_uart.o: ./sim_main.cpp ./sim_uart.h
-# obj_dir/vgasim.o: ./vgasim.cpp ./vgasim.h ./videomode.h ./image.h
 
 obj_dir/%.o: ./%.cpp | obj_dir
 	$(CXX) $(CFLAGS) $(INCS) -c $< -o $@

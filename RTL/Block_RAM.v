@@ -6,7 +6,7 @@
  */
 
 module Block_RAM #(
-    parameter ADDR_WIDTH = 14
+    parameter ADDR_WIDTH = 12
 )   (
     input clka,
     input [ADDR_WIDTH-1:0] addra,

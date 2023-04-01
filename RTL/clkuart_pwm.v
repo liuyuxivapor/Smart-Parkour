@@ -5,7 +5,7 @@
  * @Last Modified time: 2023-03-04 20:24:23
  */
 
-module clkuart_pwm #(parameter BPS_PARA = 347)
+module clkuart_pwm #(parameter BPS_PARA = 217)    //115200
                     (input bps_en,
                      input clk,
                      input RSTn,
