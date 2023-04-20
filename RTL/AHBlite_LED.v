@@ -53,7 +53,7 @@ reg [31:0] pwm_cnt;
 
 always@(posedge HCLK or negedge HRESETn) begin
     if(~HRESETn) pwm_cnt <= 32'b0;
-    else if(pwm_cnt == 20'd781250) pwm_cnt <= 32'b0;
+    else if(pwm_cnt == 32'd5000000) pwm_cnt <= 32'b0;
     else pwm_cnt <= pwm_cnt + 1'b1;
 end
 
@@ -61,7 +61,7 @@ reg light_clk;
 
 always@(posedge HCLK or negedge HRESETn) begin
     if(~HRESETn) light_clk <= 1'b0;
-    else if(pwm_cnt == 20'd781250) light_clk <= ~light_clk;
+    else if(pwm_cnt == 32'd5000000) light_clk <= ~light_clk;
 end
 
 

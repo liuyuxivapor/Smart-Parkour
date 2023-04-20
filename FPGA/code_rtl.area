@@ -8,31 +8,31 @@ IO Statistics
   #inout                    1
 
 Gate Statistics
-#Basic gates            20688
-  #and                   9782
+#Basic gates            20483
+  #and                   9668
   #nand                     0
-  #or                    2151
+  #or                    2060
   #nor                      0
   #xor                     73
   #xnor                     0
   #buf                      0
-  #not                   6530
+  #not                   6529
   #bufif1                   1
-  #MX21                   578
+  #MX21                   579
   #FADD                     0
   #DFF                   1573
   #LATCH                    0
 #MACRO_ADD                 21
-#MACRO_EQ                 115
+#MACRO_EQ                 110
 #MACRO_MULT                 1
-#MACRO_MUX                229
+#MACRO_MUX                261
 #MACRO_OTHERS              10
 
 Report Hierarchy Area:
 +-------------------------------------------------------------+
 |Instance           |Module           |gates  |seq    |macros |
 +-------------------------------------------------------------+
-|top                |Cortex_M0_Soc    |19115  |1573   |147    |
+|top                |Cortex_M0_Soc    |18910  |1573   |142    |
 |  Buzzer_Interface |AHBlite_Buzzer   |128    |66     |37     |
 |    BZ             |BZ_music         |122    |64     |37     |
 |  u_logic          |cortexm0ds_logic |18575  |1305   |14     |

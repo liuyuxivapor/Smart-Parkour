@@ -8,12 +8,12 @@ IO Statistics
   #inout                    1
 
 Utilization Statistics
-#lut                     6050   out of  19600   30.87%
+#lut                     5992   out of  19600   30.57%
 #reg                     1569   out of  19600    8.01%
-#le                      6082
-  #lut only              4513   out of   6082   74.20%
-  #reg only                32   out of   6082    0.53%
-  #lut&reg               1537   out of   6082   25.27%
+#le                      6002
+  #lut only              4433   out of   6002   73.86%
+  #reg only                10   out of   6002    0.17%
+  #lut&reg               1559   out of   6002   25.97%
 #dsp                        3   out of     29   10.34%
 #bram                      33   out of     64   51.56%
   #bram9k                  33
@@ -80,18 +80,18 @@ Report Hierarchy Area:
 +-----------------------------------------------------------------------+
 |Instance |Module        |le    |lut    |ripple |seq    |bram   |dsp    |
 +-----------------------------------------------------------------------+
-|top      |Cortex_M0_Soc |6082  |5933   |117    |1569   |33     |3      |
+|top      |Cortex_M0_Soc |6002  |5875   |117    |1569   |33     |3      |
 +-----------------------------------------------------------------------+
 
 
 DataNet Average Fanout:
 
    Index     Fanout    Nets  
-    #1         1       3085  
-    #2         2       1677  
-    #3         3       568   
-    #4         4       448   
-    #5        5-10     669   
-    #6       11-50     415   
-    #7       51-100     19   
-  Average     3.59           
+    #1         1       3125  
+    #2         2       1668  
+    #3         3       542   
+    #4         4       443   
+    #5        5-10     665   
+    #6       11-50     409   
+    #7       51-100     20   
+  Average     3.54           

@@ -45,14 +45,11 @@ module AHBlite_Decoder
   /*UART OUTPUT SELECTION SIGNAL*/
   output wire P3_HSEL, 
 
-  // /*Camera OUTPUT SELECTION SIGNAL*/
-  // output wire P4_HSEL,
-
   /*LED OUTPUT SELECTION SIGNAL*/
-  output wire P5_HSEL,
+  output wire P4_HSEL,
 
   /*BUZZER OUTPUT SELECTION SIGNAL*/
-  output wire P6_HSEL
+  output wire P5_HSEL
 );
 
   //RAMCODE-----------------------------------
@@ -83,12 +80,12 @@ module AHBlite_Decoder
 
   //0X40000000 LED
   /*Insert LED decoder code there*/
-  assign P5_HSEL = (HADDR[31:4] == 28'h4000000) ? Port4_en : 1'b0; 
+  assign P4_HSEL = (HADDR[31:4] == 28'h4000000) ? Port4_en : 1'b0; 
   /***********************************/
 
   //0X40010000 EN
   /*Insert Buzzer decoder code there*/
-  assign P6_HSEL = (HADDR[31:16] == 16'h4001) ? Port5_en : 1'b0;
+  assign P5_HSEL = (HADDR[31:16] == 16'h4001) ? Port5_en : 1'b0;
   /***********************************/
 
 endmodule

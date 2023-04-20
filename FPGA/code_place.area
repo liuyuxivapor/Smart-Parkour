@@ -8,12 +8,12 @@ IO Statistics
   #inout                    1
 
 Utilization Statistics
-#lut                     5967   out of  19600   30.44%
+#lut                     5914   out of  19600   30.17%
 #reg                     1569   out of  19600    8.01%
-#le                      5999
-  #lut only              4430   out of   5999   73.85%
-  #reg only                32   out of   5999    0.53%
-  #lut&reg               1537   out of   5999   25.62%
+#le                      5924
+  #lut only              4355   out of   5924   73.51%
+  #reg only                10   out of   5924    0.17%
+  #lut&reg               1559   out of   5924   26.32%
 #dsp                        3   out of     29   10.34%
 #bram                      33   out of     64   51.56%
   #bram9k                  33
@@ -79,5 +79,5 @@ Report Hierarchy Area:
 +-----------------------------------------------------------------------+
 |Instance |Module        |le    |lut    |ripple |seq    |bram   |dsp    |
 +-----------------------------------------------------------------------+
-|top      |Cortex_M0_Soc |5999  |5850   |117    |1569   |33     |3      |
+|top      |Cortex_M0_Soc |5924  |5797   |117    |1569   |33     |3      |
 +-----------------------------------------------------------------------+

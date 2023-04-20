@@ -569,6 +569,7 @@ module Cortex_M0_Soc (
     .BPS_PARA(16)
     `else
     .BPS_PARA(217)
+    `endif
   ) clkuart_pwm(
     .clk(clk),
     .RSTn(cpuresetn),

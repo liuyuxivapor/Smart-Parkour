@@ -8,15 +8,15 @@ IO Statistics
   #inout                    1
 
 LUT Statistics
-#Total_luts              5606
-  #lut4                  4256
-  #lut5                  1043
+#Total_luts              5595
+  #lut4                  4357
+  #lut5                   931
   #lut6                     0
   #lut5_mx41                0
   #lut4_alu1b             307
 
 Utilization Statistics
-#lut                     5606   out of  19600   28.60%
+#lut                     5595   out of  19600   28.55%
 #reg                     1572   out of  19600    8.02%
 #le                         0
 #dsp                        3   out of     29   10.34%
@@ -35,8 +35,8 @@ Report Hierarchy Area:
 +-----------------------------------------------------------------------------+
 |Instance           |Module           |lut    |ripple |seq    |bram   |dsp    |
 +-----------------------------------------------------------------------------+
-|top                |Cortex_M0_Soc    |5299   |307    |1572   |33     |3      |
+|top                |Cortex_M0_Soc    |5288   |307    |1572   |33     |3      |
 |  Buzzer_Interface |AHBlite_Buzzer   |215    |59     |66     |1      |0      |
 |    BZ             |BZ_music         |213    |59     |64     |1      |0      |
-|  u_logic          |cortexm0ds_logic |4740   |173    |1304   |0      |3      |
+|  u_logic          |cortexm0ds_logic |4723   |173    |1304   |0      |3      |
 +-----------------------------------------------------------------------------+
