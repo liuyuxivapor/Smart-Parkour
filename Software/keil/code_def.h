@@ -242,7 +242,7 @@ typedef struct{
     volatile uint32_t EN;
 }BuzzerType;
 
-#define Buzzer_BASE 0x40060000
+#define Buzzer_BASE 0x40010000
 #define Buzzer ((BuzzerType *)Buzzer_BASE)
 
 //LED DEF
@@ -250,7 +250,7 @@ typedef struct{
     volatile uint32_t LED_MODE;
 }LEDType;
 
-#define LED_BASE 0x40040000
+#define LED_BASE 0x40000000
 #define LED ((LEDType *)LED_BASE)
 
 #endif

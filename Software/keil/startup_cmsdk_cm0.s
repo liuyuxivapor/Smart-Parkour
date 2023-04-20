@@ -75,10 +75,10 @@ __Vectors       DCD     __initial_sp              ; Top of Stack
                 DCD     0            			  ; PendSV Handler
                 DCD     SysTick_Handler           ; SysTick Handler
                 DCD     UART_Handler              ; IRQ0 Handler
-                DCD     KEY0_Handler              ; IRQ1 Handler
-                DCD     KEY1_Handler              ; IRQ2 Handler
-                DCD     KEY2_Handler              ; IRQ3 Handler
-                DCD     KEY3_Handler              ; IRQ4 Handler
+                DCD     KEY3_Handler              ; IRQ1 Handler
+                DCD     KEY2_Handler              ; IRQ2 Handler
+                DCD     KEY1_Handler              ; IRQ3 Handler
+                DCD     KEY0_Handler              ; IRQ4 Handler
 
                 AREA    |.text|, CODE, READONLY
 
@@ -152,8 +152,6 @@ KEY3_Handler    PROC
                 EXPORT  __heap_limit
 
                 ELSE
-
-                IMPORT  __use_two_region_memory
                 EXPORT  __user_initial_stackheap
 
 __user_initial_stackheap 

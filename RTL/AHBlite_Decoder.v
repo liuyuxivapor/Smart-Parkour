@@ -23,16 +23,12 @@ module AHBlite_Decoder
   parameter Port3_en = 1,
   /************************/
 
-  // /*Camera enable parameter*/
-  // parameter Port4_en = 1,
-  // /************************/
-
   /*LED enable parameter*/
-  parameter Port5_en = 1,
+  parameter Port4_en = 1,
   /************************/
 
   /*Buzzer enable parameter*/
-  parameter Port6_en = 1
+  parameter Port5_en = 1
   /************************/
 )(
   input [31:0] HADDR,
@@ -85,19 +81,14 @@ module AHBlite_Decoder
   /*Insert UART decoder code there*/
   assign P3_HSEL = (HADDR[31:4] == 28'h4000001) ? Port3_en : 1'd0;
 
-  // //0X4030000 Camera
-  // /*Insert Camera decoder code there*/
-  // assign P4_HSEL = (HADDR[31:20] == 12'h403) ? Port4_en : 1'b0;  
-  // /***********************************/
-
-  //0X40040000 LED
+  //0X40000000 LED
   /*Insert LED decoder code there*/
-  assign P5_HSEL = (HADDR[31:16] == 16'h4004) ? Port5_en : 1'b0; 
+  assign P5_HSEL = (HADDR[31:4] == 28'h4000000) ? Port4_en : 1'b0; 
   /***********************************/
 
-  //0X40060000 EN
+  //0X40010000 EN
   /*Insert Buzzer decoder code there*/
-  assign P6_HSEL = (HADDR[31:16] == 16'h4006) ? Port6_en : 1'b0;
+  assign P6_HSEL = (HADDR[31:16] == 16'h4001) ? Port5_en : 1'b0;
   /***********************************/
 
 endmodule
